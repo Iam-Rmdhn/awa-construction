@@ -39,8 +39,8 @@ function NavContent({
 				<Image
 					src="/awa_contruction_logo.svg"
 					alt="Awa Construction Logo"
-					width={200}
-					height={200}
+					width={500}
+					height={500}
 					className={cn(
 						"h-10 w-auto transition-all duration-300",
 						{
@@ -56,7 +56,7 @@ function NavContent({
 						<Link
 							key={i}
 							href={link.href}
-							className="group relative cursor-pointer w-32 h-10 border bg-white rounded-full overflow-hidden text-black font-semibold flex items-center justify-center"
+							className="group relative cursor-pointer w-32 h-10 border bg-white rounded-full overflow-hidden text-black font-unbounded flex items-center justify-center"
 						>
 							<span className="translate-y-0 group-hover:-translate-y-12 group-hover:opacity-0 transition-all duration-300 inline-block">
 								{link.label}
@@ -69,7 +69,7 @@ function NavContent({
 						<Link
 							key={i}
 							className={cn(
-								"text-base font-medium relative py-2",
+								"text-base font-unbounded relative py-2",
 								"after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-current after:transition-transform after:duration-300 hover:after:origin-bottom-left hover:after:scale-x-100",
 								{
 									"text-white": isHeroState && !open,
@@ -195,7 +195,7 @@ export function Header() {
 					<div className="flex flex-col items-center gap-y-6">
 						{links.map((link, index) => (
 							link.label === 'Contact' ? (
-								<Button key={link.label} asChild className="text-xl font-light w-full max-w-[200px] bg-white text-black hover:bg-white/90" size="lg">
+								<Button key={link.label} asChild className="text-xl font-unbounded w-full max-w-[200px] bg-white text-black hover:bg-white/90" size="lg">
 									<Link
 										href={link.href}
 										onClick={() => setOpen(false)}
