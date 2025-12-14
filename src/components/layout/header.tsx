@@ -1,12 +1,12 @@
 'use client';
 import React from 'react';
-import { Button } from '@/app/ui/button';
+import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { MenuToggleIcon } from '@/app/ui/menu-toggle-icon';
-import { useScroll } from '@/app/ui/use-scroll';
+import { MenuToggleIcon } from '@/components/ui/menu-toggle-icon';
+import { useScroll } from '@/hooks/use-scroll';
 import Image from "next/image";
 import Link from "next/link";
-import { LiquidGlassCard } from './liquid-glass-card';
+import { LiquidGlassCard } from '@/components/ui/liquid-glass-card';
 
 interface NavLink {
 	label: string;

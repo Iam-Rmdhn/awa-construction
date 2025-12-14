@@ -18,7 +18,7 @@ export default function About() {
             </p>
 
             <div className="bg-[#EEEEEE] p-6 rounded-lg mb-6">
-              <p className="italic" style={{color: '#393E46'}}>"Pengerjaan tepat waktu, kualitas terjamin, dan harga kompetitif adalah komitmen kami."</p>
+              <p className="italic" style={{color: '#393E46'}}>&quot;Pengerjaan tepat waktu, kualitas terjamin, dan harga kompetitif adalah komitmen kami.&quot;</p>
               <p className="mt-2 font-semibold" style={{color: '#393E46'}}>- Klien Terpuaskan</p>
             </div>
           </div>
