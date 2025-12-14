@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Unbounded, Nunito_Sans } from "next/font/google";
 import "./globals.css";
-import { Header } from "@/components/layout/header";
+import { Header } from "@/components/layout/Navbar";
 import SmoothScroll from "@/components/providers/SmoothScroll";
+import SplashScreen from "@/components/layout/SplashScreen";
 
 const unbounded = Unbounded({
   variable: "--font-unbounded",
@@ -29,6 +30,7 @@ export default function RootLayout({
       <body
         className={`${unbounded.variable} ${nunitoSans.variable} antialiased`}
       >
+        <SplashScreen />
         <SmoothScroll>
           <Header />
           {children}
