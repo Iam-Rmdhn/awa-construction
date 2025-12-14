@@ -1,9 +1,9 @@
 'use client';
 import React from 'react';
-import { Button, buttonVariants } from '@/components/ui/button';
+import { Button } from '@/app/ui/button';
 import { cn } from '@/lib/utils';
-import { MenuToggleIcon } from '@/components/ui/menu-toggle-icon';
-import { useScroll } from '@/components/ui/use-scroll';
+import { MenuToggleIcon } from '@/app/ui/menu-toggle-icon';
+import { useScroll } from '@/app/ui/use-scroll';
 import Image from "next/image";
 import Link from "next/link";
 import { LiquidGlassCard } from './liquid-glass-card';
@@ -44,7 +44,7 @@ function NavContent({
 					className={cn(
 						"h-10 w-auto transition-all duration-300",
 						{
-							"brightness-0 invert": isHeroState && !open
+							"brightness-0 invert": (isHeroState && !open) || open
 						}
 					)}
 					priority
@@ -53,19 +53,27 @@ function NavContent({
 			<div className="hidden items-center gap-6 md:flex relative z-40">
 				{links.map((link, i) => (
 					link.label === 'Contact' ? (
-						<Button key={i} asChild>
-							<Link href={link.href}>
+						<Link
+							key={i}
+							href={link.href}
+							className="group relative cursor-pointer w-32 h-10 border bg-white rounded-full overflow-hidden text-black font-semibold flex items-center justify-center"
+						>
+							<span className="translate-y-0 group-hover:-translate-y-12 group-hover:opacity-0 transition-all duration-300 inline-block">
 								{link.label}
-							</Link>
-						</Button>
+							</span>
+							<div className="flex gap-2 text-white bg-[#02D2F6] z-10 items-center absolute left-0 top-0 h-full w-full justify-center translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 rounded-full">
+								<span>{link.label}</span>
+							</div>
+						</Link>
 					) : (
 						<Link
 							key={i}
 							className={cn(
-								buttonVariants({ variant: 'ghost' }),
-								"text-base font-medium transition-colors duration-300",
+								"text-base font-medium relative py-2",
+								"after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-current after:transition-transform after:duration-300 hover:after:origin-bottom-left hover:after:scale-x-100",
 								{
-									"text-white hover:text-white hover:bg-white/10": isHeroState && !open
+									"text-white": isHeroState && !open,
+									"text-foreground hover:text-foreground/80": !isHeroState || open
 								}
 							)}
 							href={link.href}
@@ -75,7 +83,18 @@ function NavContent({
 					)
 				))}
 			</div>
-			<Button size="icon" variant="outline" onClick={() => setOpen(!open)} className="md:hidden relative z-40">
+			<Button 
+				size="icon" 
+				variant="ghost" 
+				onClick={() => setOpen(!open)} 
+				className={cn(
+					"md:hidden relative z-40 hover:bg-transparent transition-colors duration-300",
+					{
+						"text-white hover:text-white/80": isHeroState || open,
+						"text-black hover:text-black/80": !isHeroState && !open
+					}
+				)}
+			>
 				<MenuToggleIcon open={open} className="size-5" duration={300} />
 			</Button>
 		</nav>
@@ -105,7 +124,6 @@ export function Header() {
 		};
 	}, [open]);
 
-	// Logic to determine if we are in the "Hero" state (transparent, white text)
 	const isHeroState = !scrolled && !open;
 
 	return (
@@ -113,8 +131,8 @@ export function Header() {
 			className={cn(
 				'fixed top-0 z-50 mx-auto w-full left-0 right-0 transition-all duration-500 ease-in-out',
                 {
-                    'bg-background/95 h-full': open,
-					'pointer-events-none': !open && !scrolled // Let clicks pass through on hero
+                    'bg-black/60 backdrop-blur-lg h-full': open,
+					'pointer-events-none': !open && !scrolled
                 }
 			)}
 		>
@@ -129,7 +147,6 @@ export function Header() {
 			>
                 <LiquidGlassCard
                     draggable={false}
-					// Only apply glass card styles when scrolled
                     className={cn(
 						"mx-auto transition-all duration-500 ease-in-out flex flex-col justify-center",
 						{
@@ -137,21 +154,21 @@ export function Header() {
 							"rounded-none bg-transparent shadow-none": !scrolled && !open,
 							"w-full h-16 max-w-7xl px-6": !scrolled && !open,
 							"w-full h-14 max-w-5xl px-8": scrolled && !open,
-							// Open state overrides
-							"bg-background/95 h-auto rounded-none": open
+							"bg-transparent h-auto rounded-none": open
 						}
 					)}
                     borderRadius={scrolled && !open ? "9999px" : "0px"}
-                    blurIntensity={scrolled && !open ? "xl" : "sm"}
+                    blurIntensity={scrolled && !open ? "md" : "none"}
                     shadowIntensity={scrolled && !open ? "md" : "none"}
-                    glowIntensity={scrolled && !open ? "sm" : "none"}
+                    glowIntensity={scrolled && !open ? "md" : "none"}
                 >
                     <NavContent 
 						className={cn(
 							"transition-all duration-500",
 							{
 								"h-14": scrolled && !open,
-								"h-16": !scrolled && !open
+								"h-16": !scrolled && !open,
+								"h-20": open
 							}
 						)}
 						isHeroState={isHeroState} 
@@ -164,10 +181,10 @@ export function Header() {
 
 			<div
 				className={cn(
-					'fixed top-14 right-0 bottom-0 left-0 z-50 flex flex-col overflow-hidden border-y md:hidden transition-all duration-300 bg-background/95',
+					'fixed top-14 right-0 bottom-0 left-0 z-50 flex flex-col overflow-hidden border-y md:hidden transition-all duration-300 bg-transparent',
 					open ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none',
 				)}
-                style={{ top: scrolled ? '4.5rem' : '4rem' }}
+                style={{ top: open ? '5rem' : (scrolled ? '4.5rem' : '4rem') }}
 			>
 				<div
 					className={cn(
@@ -178,7 +195,7 @@ export function Header() {
 					<div className="flex flex-col items-center gap-y-6">
 						{links.map((link, index) => (
 							link.label === 'Contact' ? (
-								<Button key={link.label} asChild className="text-xl font-light w-full max-w-[200px]" size="lg">
+								<Button key={link.label} asChild className="text-xl font-light w-full max-w-[200px] bg-white text-black hover:bg-white/90" size="lg">
 									<Link
 										href={link.href}
 										onClick={() => setOpen(false)}
@@ -191,7 +208,7 @@ export function Header() {
 								<Link
 									key={link.label}
 									href={link.href}
-									className="text-3xl font-light text-foreground hover:text-muted-foreground transition-colors"
+									className="text-3xl font-light text-white hover:text-white/70 transition-colors"
 									onClick={() => setOpen(false)}
 									style={{ transitionDelay: `${index * 50}ms` }}
 								>
