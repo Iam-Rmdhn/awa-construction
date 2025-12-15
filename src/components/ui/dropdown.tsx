@@ -88,15 +88,15 @@ export default function Dropdown({
             : "opacity-0 scale-y-95 -translate-y-2 pointer-events-none"
         }`}
       >
-        <div className="py-2">
+        <div className="py-2 px-2">
           {options.map((option) => (
             <button
               key={option.value}
               type="button"
               onClick={() => handleSelect(option.value)}
-              className={`w-full px-5 py-4 text-left font-nunito text-base transition-all duration-200 cursor-pointer ${
+              className={`w-full px-5 py-4 text-left font-nunito text-base transition-all duration-200 cursor-pointer rounded-lg ${
                 (value !== undefined ? value : selectedValue) === option.value
-                  ? "bg-[#00ADB5] text-white rounded-lg mx-2"
+                  ? "bg-[#00ADB5] text-white"
                   : "text-gray-800 hover:bg-gray-50"
               }`}
             >
