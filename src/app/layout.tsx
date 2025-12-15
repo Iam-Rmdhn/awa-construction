@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/Navbar";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import SplashScreen from "@/components/layout/SplashScreen";
+import Chatbot from "@/components/bot/Chatbot";
 
 const unbounded = Unbounded({
   variable: "--font-unbounded",
@@ -34,6 +35,7 @@ export default function RootLayout({
         <SmoothScroll>
           <Header />
           {children}
+          <Chatbot />
         </SmoothScroll>
       </body>
     </html>
