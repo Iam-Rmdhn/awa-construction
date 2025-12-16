@@ -20,7 +20,7 @@ export function Header() {
 
 	const links = [
 		{ label: t.nav.home, href: '/' },
-		{ label: t.nav.company, href: '#about' }, // Assuming anchors
+		{ label: t.nav.company, href: '#about' },
 		{ label: t.nav.project, href: '#projects' },
 		{ label: t.nav.service, href: '#services' },
 		{ label: t.nav.contact, href: '#contact' },

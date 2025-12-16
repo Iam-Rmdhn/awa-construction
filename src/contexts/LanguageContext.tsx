@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
+import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import { Language, TRANSLATIONS } from '@/constants/translations';
 
 type LanguageContextType = {
@@ -17,6 +17,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
     // Optional: Load from localStorage if persisted
     const savedLang = localStorage.getItem('language') as Language;
