@@ -21,6 +21,8 @@ export const metadata: Metadata = {
   description: "",
 };
 
+import { LanguageProvider } from "@/contexts/LanguageContext";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -31,12 +33,14 @@ export default function RootLayout({
       <body
         className={`${unbounded.variable} ${nunitoSans.variable} antialiased`}
       >
-        <SplashScreen />
-        <SmoothScroll>
-          <Header />
-          {children}
-          <Chatbot />
-        </SmoothScroll>
+        <LanguageProvider>
+          <SplashScreen />
+          <SmoothScroll>
+            <Header />
+            {children}
+            <Chatbot />
+          </SmoothScroll>
+        </LanguageProvider>
       </body>
     </html>
   );

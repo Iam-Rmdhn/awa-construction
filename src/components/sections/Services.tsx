@@ -1,54 +1,113 @@
+"use client";
+
+import { ICONS } from "@/constants/icons";
+import Image from "next/image";
+import { motion } from "motion/react";
+import Link from "next/link";
+import { useLanguage } from "@/contexts/LanguageContext";
+
 export default function Services() {
-  // Sample services data
+  const { t } = useLanguage();
+
   const services = [
     {
-      title: 'Renovasi Rumah',
-      description: 'Perbaikan dan pembaruan hunian sesuai kebutuhan dan gaya hidup Anda.'
+      title: t.services.items.design.title,
+      description: t.services.items.design.desc,
+      icon: ICONS.DESAIN_PLANING,
     },
     {
-      title: 'Pembangunan Kantor dan Gedung',
-      description: 'Konstruksi gedung perkantoran dan komersial dengan standar terbaik.'
+      title: t.services.items.construction.title,
+      description: t.services.items.construction.desc,
+      icon: ICONS.CONSTRUCTION,
     },
     {
-      title: 'Desain Interior dan Eksterior',
-      description: 'Solusi desain menyeluruh untuk tampilan dalam dan luar bangunan.'
+      title: t.services.items.maintenance.title,
+      description: t.services.items.maintenance.desc,
+      icon: ICONS.MAINT,
     },
-    {
-      title: 'Pengelolaan Proyek Konstruksi',
-      description: 'Manajemen proyek konstruksi dari awal hingga akhir dengan efisiensi maksimal.'
-    }
   ];
 
   return (
-    <section className="py-20 bg-[#EEEEEE]">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-16" style={{color: '#222831'}}>Layanan Kami</h2>
+    <section className="py-24 bg-[#F2F2F2]" id="services">
+      <div className="container mx-auto px-6">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="text-center mb-16 max-w-2xl mx-auto"
+        >
+          <h2 className="text-4xl font-bold mb-4 text-black">
+            {t.services.title}
+          </h2>
+          <p className="text-gray-600">
+            {t.services.subtitle}
+          </p>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {services.map((service, index) => (
-            <div
+            <motion.div
               key={index}
-              className="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.5,
+                ease: "easeOut",
+                delay: index * 0.2,
+              }}
+              viewport={{ once: true }}
+              className="bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-center text-center"
             >
-              <div
-                className="w-16 h-16 rounded-full flex items-center justify-center mb-6"
-                style={{backgroundColor: '#00ADB5'}}
-              >
-                <span className="text-white text-2xl font-bold">{index + 1}</span>
+              <div className="mb-6 relative w-16 h-16">
+                <Image
+                  src={service.icon}
+                  alt={service.title}
+                  fill
+                  className="object-contain"
+                />
               </div>
-
-              <h3 className="text-xl font-bold mb-3" style={{color: '#393E46'}}>{service.title}</h3>
-              <p className="mb-4" style={{color: '#393E46'}}>{service.description}</p>
-
-              <button
-                className="text-[#00ADB5] font-semibold hover:underline"
-                style={{color: '#00ADB5'}}
-              >
-                Pelajari Lebih Lanjut →
-              </button>
-            </div>
+              <h3 className="text-xl font-bold mb-4 text-black">
+                {service.title}
+              </h3>
+              <p className="text-gray-500 text-sm leading-relaxed">
+                {service.description}
+              </p>
+            </motion.div>
           ))}
         </div>
+
+        {/* Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center"
+        >
+          <Link
+            href="#"
+            className="group inline-flex items-center gap-2 bg-[#0055FF] text-white px-8 py-4 rounded-full font-semibold hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl"
+          >
+            {t.services.cta}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={2}
+              stroke="currentColor"
+              className="w-5 h-5 transition-transform group-hover:translate-x-1"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+              />
+            </svg>
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

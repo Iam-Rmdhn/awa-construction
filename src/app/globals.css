@@ -1,5 +1,16 @@
 @import "tailwindcss";
 
+
+:root {
+  --color-background: #f0f2f5;
+  --color-foreground: #222831;
+  --color-primary: #4f46e5;
+  --color-secondary: #4f46e5;
+  --color-success: #4f46e5;
+  --color-danger: #4f46e5;
+  --color-warning: #4f46e5;
+  --color-info: #4f46e5;
+} 
 @theme {
   --font-unbounded: var(--font-unbounded);
   --font-nunito: var(--font-nunito-sans);
@@ -7,7 +18,6 @@
 body {
   background: var(--color-background);
   color: var(--color-foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 * {

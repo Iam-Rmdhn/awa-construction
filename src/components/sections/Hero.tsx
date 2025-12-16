@@ -1,3 +1,5 @@
+import { IMAGES } from '@/constants/images';
+
 export default function Hero() {
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
@@ -5,7 +7,7 @@ export default function Hero() {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url('/assets/img/hero-backround.png')",
+            backgroundImage: `url('${IMAGES.HERO_BACKGROUND}')`,
           }}
         ></div>
       </div>
