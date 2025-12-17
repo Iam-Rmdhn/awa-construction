@@ -5,6 +5,7 @@ import { Header } from "@/components/layout/Navbar";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import SplashScreen from "@/components/layout/SplashScreen";
 import Chatbot from "@/components/bot/Chatbot";
+import { ChatHistoryProvider } from "@/components/bot/HistoryChatbot";
 
 const unbounded = Unbounded({
   variable: "--font-unbounded",
@@ -34,12 +35,14 @@ export default function RootLayout({
         className={`${unbounded.variable} ${nunitoSans.variable} antialiased`}
       >
         <LanguageProvider>
-          <SplashScreen />
-          <SmoothScroll>
-            <Header />
-            {children}
-            <Chatbot />
-          </SmoothScroll>
+          <ChatHistoryProvider>
+            <SplashScreen />
+            <SmoothScroll>
+              <Header />
+              {children}
+              <Chatbot />
+            </SmoothScroll>
+          </ChatHistoryProvider>
         </LanguageProvider>
       </body>
     </html>
