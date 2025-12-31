@@ -10,6 +10,10 @@ import {
   getServiceResponse,
   getDefaultResponse,
 } from "./ServiceBot";
+import {
+  detectGreeting,
+  getGreetingResponse,
+} from "./Logicbot";
 
 interface MobileChatbotProps {
   onClose: () => void;
@@ -37,8 +41,16 @@ export default function MobileChatbot({ onClose }: MobileChatbotProps) {
       content: inputValue,
     });
 
-    // Check if it's a service question
-    if (detectServiceQuestion(inputValue)) {
+    // Check if it's a greeting
+    if (detectGreeting(inputValue)) {
+      // Add greeting response
+      setTimeout(() => {
+        addMessage({
+          type: "bot",
+          content: getGreetingResponse(inputValue),
+        });
+      }, 500);
+    } else if (detectServiceQuestion(inputValue)) {
       // Add bot response with options
       setTimeout(() => {
         addMessage({
@@ -122,7 +134,7 @@ export default function MobileChatbot({ onClose }: MobileChatbotProps) {
                     <button
                       key={index}
                       onClick={() => handleOptionClick(option)}
-                      className="w-full text-left px-3 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg text-sm transition-colors border border-gray-200 font-nunito"
+                      className="w-full text-left px-3 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg text-sm transition-colors border border-gray-200 font-nunito cursor-pointer"
                     >
                       {option.label}
                     </button>
