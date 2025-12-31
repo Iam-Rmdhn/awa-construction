@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { MapPin, Ruler, Clock, ArrowRight, ChevronDown } from "lucide-react";
+import { MapPinned, LandPlot, AlarmClock, ArrowRight, ChevronDown } from "lucide-react";
 import { useState } from "react";
 
 export default function FeaturedProjects() {
@@ -60,7 +60,6 @@ export default function FeaturedProjects() {
           ))}
         </div>
       </div>
-
       {/* Projects Section */}
       <div className="py-12 md:py-24 pt-20 md:pt-32 container mx-auto px-4 sm:px-6 md:px-[61px]">
         {/* Header */}
@@ -120,17 +119,17 @@ export default function FeaturedProjects() {
                     className="object-cover"
                   />
                   <div className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4 flex gap-2 sm:gap-3">
-                    <div className="px-2 py-1 sm:px-4 sm:py-2 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white font-bold text-xs sm:text-sm">
+                    <div className="px-2 py-1 sm:px-4 sm:py-2 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-gray-700 font-bold text-xs sm:text-sm">
                       {project.year}
                     </div>
-                    <div className="px-2 py-1 sm:px-4 sm:py-2 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white font-bold text-xs sm:text-sm">
+                    <div className="px-2 py-1 sm:px-4 sm:py-2 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-gray-700 font-bold text-xs sm:text-sm">
                       {project.type}
                     </div>
                   </div>
                 </div>
                 {/* Content */}
                 <div className="flex flex-col justify-center w-full md:w-1/2 text-white">
-                  <h3 className="font-unbounded text-lg sm:text-xl md:text-2xl font-bold mb-2 md:mb-4 uppercase">
+                  <h3 className="font-unbounded letter-spacing-[8%] text-lg sm:text-xl md:text-2xl font-bold mb-2 md:mb-4 uppercase">
                     {project.title}
                   </h3>
                   <p className="font-nunito text-white/80 text-xs sm:text-sm md:text-base leading-relaxed mb-4 md:mb-6 line-clamp-3 md:line-clamp-none">
@@ -139,22 +138,22 @@ export default function FeaturedProjects() {
                   <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
                     <div className="flex items-center gap-2 md:gap-3">
                       <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-(--color-secondary) flex items-center justify-center">
-                        <MapPin size={12} className="text-white md:hidden" />
-                        <MapPin size={16} className="text-white hidden md:block" />
+                        <MapPinned size={12} className="text-white md:hidden" />
+                        <MapPinned size={16} className="text-white hidden md:block" />
                       </div>
                       <span className="font-nunito text-xs md:text-sm">Lokasi: {project.location}</span>
                     </div>
                     <div className="flex items-center gap-2 md:gap-3">
                       <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-(--color-secondary) flex items-center justify-center">
-                        <Ruler size={12} className="text-white md:hidden" />
-                        <Ruler size={16} className="text-white hidden md:block" />
+                        <LandPlot size={12} className="text-white md:hidden" />
+                        <LandPlot size={16} className="text-white hidden md:block" />
                       </div>
                       <span className="font-nunito text-xs md:text-sm">Luas Area: {project.area}</span>
                     </div>
                     <div className="flex items-center gap-2 md:gap-3">
                       <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-(--color-secondary) flex items-center justify-center">
-                        <Clock size={12} className="text-white md:hidden" />
-                        <Clock size={16} className="text-white hidden md:block" />
+                        <AlarmClock size={12} className="text-white md:hidden" />
+                        <AlarmClock size={16} className="text-white hidden md:block" />
                       </div>
                       <span className="font-nunito text-xs md:text-sm">Waktu Pengerjaan: {project.time}</span>
                     </div>
