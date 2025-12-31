@@ -11,18 +11,17 @@ import {
   getServiceResponse,
   getDefaultResponse,
 } from "./ServiceBot";
-
-const greetings = [
-  "Can I help You?",
-  "Halo! Ada yang bisa saya bantu?",
-  "AWA Bot Siap Membantumu",
-  "Good day! What can I do for you?",
-  "Welcome! I'm here to help with anything you need.",
-];
+import {
+  detectGreeting,
+  getGreetingResponse,
+  getTimedGreetingResponse,
+} from "./Logicbot";
 
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
-  const [currentGreeting, setCurrentGreeting] = useState(greetings[0]);
+  const [currentGreeting, setCurrentGreeting] = useState(
+    getTimedGreetingResponse()
+  );
   const [isVisible, setIsVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const chatAreaRef = useRef<HTMLDivElement>(null);
@@ -40,7 +39,7 @@ export default function Chatbot() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Check initial position
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -60,9 +59,15 @@ export default function Chatbot() {
       content: inputValue,
     });
 
-    // Check if it's a service question
-    if (detectServiceQuestion(inputValue)) {
-      // Add bot response with options
+    // Cek sapaan
+    if (detectGreeting(inputValue)) {
+      setTimeout(() => {
+        addMessage({
+          type: "bot",
+          content: getGreetingResponse(inputValue),
+        });
+      }, 500);
+    } else if (detectServiceQuestion(inputValue)) {
       setTimeout(() => {
         addMessage({
           type: "bot",
@@ -96,11 +101,7 @@ export default function Chatbot() {
   };
 
   const handleMouseEnter = () => {
-    let newIndex;
-    do {
-      newIndex = Math.floor(Math.random() * greetings.length);
-    } while (greetings[newIndex] === currentGreeting && greetings.length > 1);
-    setCurrentGreeting(greetings[newIndex]);
+    setCurrentGreeting(getTimedGreetingResponse());
   };
 
   return (
@@ -214,7 +215,7 @@ export default function Chatbot() {
                           <button
                             key={index}
                             onClick={() => handleOptionClick(option)}
-                            className="w-full text-left px-3 py-2 bg-gray-50 hover:bg-gray-100 rounded-lg text-sm transition-colors border border-gray-200 font-nunito"
+                            className="w-full text-left px-3 py-2 bg-gray-50 hover:bg-gray-100 rounded-lg text-sm transition-colors border border-gray-200 font-nunito cursor-pointer"
                           >
                             {option.label}
                           </button>
