@@ -20,4 +20,8 @@ export const IMAGES = {
     PROJECT_IMAGE1: "/assets/img/warnas.png",
     PROJECT_IMAGE2: "/assets/img/masgaw.png",
     PROJECT_IMAGE3: "/assets/img/dapursagawa.png",
+
+    // contact image
+    CONTACT_IMAGE1: "/assets/img/sketc.png",
+
 } as const;

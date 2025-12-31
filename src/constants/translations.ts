@@ -53,6 +53,12 @@ export const TRANSLATIONS = {
         cta: "Contact Us"
       }
     },
+    contact: {
+      subtitle: "Contact Us",
+      title: "Partner With Us for Your Construction Needs",
+      description: "Our team is ready to deliver efficient, high-quality, and integrated construction solutions tailored to your business needs",
+      cta: "Consult Now"
+    },
     footer: {
       companyDesc: "A Leading construction company providing design, build and maintenance service across Indonesia.",
       quickAccess: "Quick Access",
@@ -118,6 +124,12 @@ export const TRANSLATIONS = {
         cta: "Hubungi Kami"
       }
     },
+    contact: {
+      subtitle: "Hubungi Kami",
+      title: "Bermitra Dengan Kami untuk Kebutuhan Konstruksi Anda",
+      description: "Tim kami siap memberikan solusi konstruksi yang efisien, berkualitas tinggi, dan terintegrasi yang disesuaikan dengan kebutuhan bisnis Anda",
+      cta: "Konsultasi Sekarang"
+    },
     footer: {
       companyDesc: "Perusahaan konstruksi terkemuka yang menyediakan layanan desain, bangun, dan pemeliharaan di seluruh Indonesia.",
       quickAccess: "Akses Cepat",
@@ -182,6 +194,12 @@ export const TRANSLATIONS = {
         desc: "私たちのチームは、お客様のビジネスニーズに合わせた効率的で高品質かつ統合された建設ソリューションを提供する準備ができています",
         cta: "私たちに問い合わせる"
       }
+    },
+    contact: {
+      subtitle: "お問い合わせ",
+      title: "建設ニーズのために私たちと提携しましょう",
+      description: "私たちのチームは、お客様のビジネスニーズに合わせた効率的で高品質かつ統合された建設ソリューションを提供する準備ができています",
+      cta: "今すぐ相談する"
     },
     footer: {
       companyDesc: "インドネシア全土で設計、建設、メンテナンスサービスを提供する大手建設会社。",

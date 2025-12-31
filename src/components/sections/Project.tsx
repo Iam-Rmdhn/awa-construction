@@ -128,7 +128,6 @@ export default function FeaturedProjects() {
                     </div>
                   </div>
                 </div>
-
                 {/* Content */}
                 <div className="flex flex-col justify-center w-full md:w-1/2 text-white">
                   <h3 className="font-unbounded text-lg sm:text-xl md:text-2xl font-bold mb-2 md:mb-4 uppercase">
@@ -137,7 +136,6 @@ export default function FeaturedProjects() {
                   <p className="font-nunito text-white/80 text-xs sm:text-sm md:text-base leading-relaxed mb-4 md:mb-6 line-clamp-3 md:line-clamp-none">
                     {project.description}
                   </p>
-
                   <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
                     <div className="flex items-center gap-2 md:gap-3">
                       <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-(--color-secondary) flex items-center justify-center">
@@ -161,7 +159,6 @@ export default function FeaturedProjects() {
                       <span className="font-nunito text-xs md:text-sm">Waktu Pengerjaan: {project.time}</span>
                     </div>
                   </div>
-
                   {/* Link */}
                   <Link
                     href="#"
@@ -175,7 +172,6 @@ export default function FeaturedProjects() {
             ))}
           </AnimatePresence>
         </div>
-
         {/* View All Button */}
         {projects.length > 2 && (
           <motion.div
@@ -198,7 +194,6 @@ export default function FeaturedProjects() {
           </motion.div>
         )}
       </div>
-
       {/* Diagonal Lines Decoration - Bottom */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-screen h-16 overflow-hidden">
         <div className="absolute inset-0 flex justify-center">
