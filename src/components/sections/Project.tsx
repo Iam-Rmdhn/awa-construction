@@ -62,14 +62,14 @@ export default function FeaturedProjects() {
       </div>
 
       {/* Projects Section */}
-      <div className="py-24 pt-32 container mx-auto px-6 md:px-[61px]">
+      <div className="py-12 md:py-24 pt-20 md:pt-32 container mx-auto px-4 sm:px-6 md:px-[61px]">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="mb-16"
+          className="mb-8 md:mb-16"
         >
           <div className="flex items-center gap-4 mb-4">
             <span className="h-[2px] w-8 bg-(--color-secondary)"></span>
@@ -77,13 +77,13 @@ export default function FeaturedProjects() {
               {t.projects.subtitle}
             </span>
           </div>
-          <h2 className="font-unbounded text-3xl md:text-4xl font-bold text-white text-center uppercase tracking-wide">
+          <h2 className="font-unbounded text-2xl sm:text-3xl md:text-4xl font-bold text-white text-center uppercase tracking-wide">
             {t.projects.title}
           </h2>
         </motion.div>
 
         {/* Project Cards */}
-        <div className="space-y-12 mb-16">
+        <div className="space-y-8 md:space-y-12 mb-8 md:mb-16">
           <AnimatePresence mode="sync">
             {visibleProjects.map((project, index) => (
               <motion.div
@@ -98,20 +98,19 @@ export default function FeaturedProjects() {
                   duration: 0.6,
                   delay: index * 0.1,
                 }}
-                className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8 bg-[#2E5F9E] p-6 overflow-hidden rounded-[24px]`}
+                className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-4 md:gap-8 bg-[#2E5F9E] p-4 md:p-6 overflow-hidden rounded-2xl md:rounded-[24px]`}
                 style={{
                   clipPath: index % 2 === 0
-                    ? 'polygon(120px 0, 100% 0, 100% 100%, 0 100%, 0 120px)'
-                    : 'polygon(0 0, calc(100% - 120px) 0, 100% 120px, 100% 100%, 0 100%)'
+                    ? 'polygon(60px 0, 100% 0, 100% 100%, 0 100%, 0 60px)'
+                    : 'polygon(0 0, calc(100% - 60px) 0, 100% 60px, 100% 100%, 0 100%)'
                 }}
               >
-                {/* Thumbnail */}
                 <div 
-                  className="relative w-full md:w-1/2 h-64 md:h-80 rounded-[22px] overflow-hidden shrink-0"
+                  className="relative w-full md:w-1/2 h-48 sm:h-56 md:h-80 rounded-xl md:rounded-[22px] overflow-hidden shrink-0"
                   style={{
                     clipPath: index % 2 === 0
-                      ? 'polygon(110px 0, 100% 0, 100% 100%, 0 100%, 0 110px)'
-                      : 'polygon(0 0, calc(100% - 110px) 0, 100% 110px, 100% 100%, 0 100%)'
+                      ? 'polygon(50px 0, 100% 0, 100% 100%, 0 100%, 0 50px)'
+                      : 'polygon(0 0, calc(100% - 50px) 0, 100% 50px, 100% 100%, 0 100%)'
                   }}
                 >
                   <Image
@@ -120,12 +119,11 @@ export default function FeaturedProjects() {
                     fill
                     className="object-cover"
                   />
-                  {/* Glass Badges */}
-                  <div className="absolute bottom-4 left-4 flex gap-3">
-                    <div className="px-4 py-2 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white font-bold text-sm">
+                  <div className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4 flex gap-2 sm:gap-3">
+                    <div className="px-2 py-1 sm:px-4 sm:py-2 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white font-bold text-xs sm:text-sm">
                       {project.year}
                     </div>
-                    <div className="px-4 py-2 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white font-bold text-sm">
+                    <div className="px-2 py-1 sm:px-4 sm:py-2 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white font-bold text-xs sm:text-sm">
                       {project.type}
                     </div>
                   </div>
@@ -133,32 +131,34 @@ export default function FeaturedProjects() {
 
                 {/* Content */}
                 <div className="flex flex-col justify-center w-full md:w-1/2 text-white">
-                  <h3 className="font-unbounded text-xl md:text-2xl font-bold mb-4 uppercase">
+                  <h3 className="font-unbounded text-lg sm:text-xl md:text-2xl font-bold mb-2 md:mb-4 uppercase">
                     {project.title}
                   </h3>
-                  <p className="font-nunito text-white/80 text-sm md:text-base leading-relaxed mb-6">
+                  <p className="font-nunito text-white/80 text-xs sm:text-sm md:text-base leading-relaxed mb-4 md:mb-6 line-clamp-3 md:line-clamp-none">
                     {project.description}
                   </p>
 
-                  {/* Details */}
-                  <div className="space-y-3 mb-6">
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full bg-(--color-secondary) flex items-center justify-center">
-                        <MapPin size={16} className="text-white" />
+                  <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
+                    <div className="flex items-center gap-2 md:gap-3">
+                      <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-(--color-secondary) flex items-center justify-center">
+                        <MapPin size={12} className="text-white md:hidden" />
+                        <MapPin size={16} className="text-white hidden md:block" />
                       </div>
-                      <span className="font-nunito text-sm">Lokasi: {project.location}</span>
+                      <span className="font-nunito text-xs md:text-sm">Lokasi: {project.location}</span>
                     </div>
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full bg-(--color-secondary) flex items-center justify-center">
-                        <Ruler size={16} className="text-white" />
+                    <div className="flex items-center gap-2 md:gap-3">
+                      <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-(--color-secondary) flex items-center justify-center">
+                        <Ruler size={12} className="text-white md:hidden" />
+                        <Ruler size={16} className="text-white hidden md:block" />
                       </div>
-                      <span className="font-nunito text-sm">Luas Area: {project.area}</span>
+                      <span className="font-nunito text-xs md:text-sm">Luas Area: {project.area}</span>
                     </div>
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full bg-(--color-secondary) flex items-center justify-center">
-                        <Clock size={16} className="text-white" />
+                    <div className="flex items-center gap-2 md:gap-3">
+                      <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-(--color-secondary) flex items-center justify-center">
+                        <Clock size={12} className="text-white md:hidden" />
+                        <Clock size={16} className="text-white hidden md:block" />
                       </div>
-                      <span className="font-nunito text-sm">Waktu Pengerjaan: {project.time}</span>
+                      <span className="font-nunito text-xs md:text-sm">Waktu Pengerjaan: {project.time}</span>
                     </div>
                   </div>
 
@@ -187,7 +187,7 @@ export default function FeaturedProjects() {
           >
             <button
               onClick={() => setShowAll(!showAll)}
-              className="inline-flex items-center gap-2 bg-(--color-secondary) text-white px-10 py-4 rounded-full font-bold text-lg transition-all cursor-pointer hover:shadow-[4px_4px_0px_0px_var(--color-tertiary)]"
+              className="inline-flex items-center gap-2 bg-(--color-secondary) text-white px-6 py-3 md:px-10 md:py-4 rounded-full font-bold text-sm md:text-lg transition-all cursor-pointer hover:shadow-[4px_4px_0px_0px_var(--color-tertiary)]"
             >
               <span>{showAll ? 'Tampilkan Lebih Sedikit' : 'Lihat Semua'}</span>
               <ChevronDown 

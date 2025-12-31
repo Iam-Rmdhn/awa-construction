@@ -31,29 +31,29 @@ export default function Services() {
   ];
 
   return (
-    <section className="py-24 bg-white" id="services">
-      <div className="container mx-auto px-6 md:px-[61px]">
+    <section className="py-12 md:py-24 bg-white" id="services">
+      <div className="container mx-auto px-4 sm:px-6 md:px-[61px]">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="mb-20 w-full"
+          className="mb-12 md:mb-20 w-full"
         >
           <div className="flex items-center gap-4 mb-4">
             <span className="font-unbounded h-[2px] w-8 bg-(--color-secondary)"></span>
-            <span className="font-unbounded font-bold text-[32px] text-(--color-secondary) uppercase tracking-wider">
+            <span className="font-unbounded font-bold text-xl sm:text-2xl md:text-[32px] text-(--color-secondary) uppercase tracking-wider">
               {t.services.title}
             </span>
           </div>
-          <p className="font-nunito text-gray-500 text-lg md:text-xl leading-relaxed text-center mx-auto max-w-3xl">
+          <p className="font-nunito text-gray-500 text-base md:text-lg lg:text-xl leading-relaxed text-center mx-auto max-w-3xl">
             {t.services.subtitle}
           </p>
         </motion.div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-[0.5px]">
+        <div className="flex flex-col items-center gap-8 md:gap-12 md:flex-row md:flex-wrap md:justify-center">
           {services.map((service, index) => (
             <motion.div
               key={index}
@@ -79,7 +79,6 @@ export default function Services() {
                     className="object-contain"
                   />
                 </div>
-                
                 {/* Illustration */}
                 <div className="relative w-full h-[90%]">
                   <Image
