@@ -178,7 +178,7 @@ export default function FeaturedProjects() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
             viewport={{ once: true }}
-            className="text-center"
+            className="text-center relative z-10"
           >
             <button
               onClick={() => setShowAll(!showAll)}

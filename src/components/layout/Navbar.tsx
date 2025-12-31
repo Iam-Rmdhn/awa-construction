@@ -52,7 +52,7 @@ export function Header() {
 				className={cn(
 					"mx-auto transition-all duration-500 ease-in-out pointer-events-auto",
 					{
-						"max-w-5xl pt-4": scrolled && !open,
+						"max-w-5xl pt-4 px-4 md:px-6 lg:px-0": scrolled && !open,
 						"w-full": !scrolled || open
 					}
 				)}
@@ -66,7 +66,7 @@ export function Header() {
 							"rounded-none bg-transparent shadow-none": !scrolled && !open,
 							"w-full h-16 max-w-7xl px-6 md:px-[61px]": !scrolled && !open,
 							"w-full h-14 max-w-5xl px-8": scrolled && !open,
-							"bg-transparent h-auto rounded-none": open
+							"bg-transparent h-auto rounded-none px-4 md:px-6 md:gap-8 gap-4": open
 						}
 					)}
                     borderRadius={scrolled && !open ? "9999px" : "0px"}
@@ -101,7 +101,7 @@ export function Header() {
                         </Link>
                         <div className="hidden items-center gap-6 md:flex relative z-40">
                             {links.map((link, i) => (
-                                link.label === t.nav.contact ? ( // Check against translated label
+                                link.label === t.nav.contact ? (
                                     <Link
                                         key={i}
                                         href={link.href}
@@ -132,7 +132,7 @@ export function Header() {
                                 )
                             ))}
                             <div className={cn("pl-4 border-l", isHeroState ? "border-white/20" : "border-foreground/20")}>
-                                <LanguageSwitcher variant={isHeroState ? "light" : "dark"} />
+                                <LanguageSwitcher variant={isHeroState ? "light" : "dark"} displayMode="icon" />
                             </div>
                         </div>
                         <Button 
