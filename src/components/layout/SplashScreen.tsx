@@ -37,7 +37,7 @@ export default function SplashScreen() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="relative"
           >
-             <Image
+            <Image
               src="/awa_contruction_logo.svg"
               alt="Awa Construction Logo"
               width={300}

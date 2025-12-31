@@ -11,6 +11,11 @@ export const IMAGES = {
     ABOUT_IMAGE3: "/assets/img/about3.jpg",
     ABOUT_IMAGE4: "/assets/img/about4.jpg",
 
+    // services image
+    SERVICES_IMAGE1: "/assets/img/service1.png",
+    SERVICES_IMAGE2: "/assets/img/service2.png",
+    SERVICES_IMAGE3: "/assets/img/service3.png",
+
     // project image
     PROJECT_IMAGE1: "/assets/img/project1.jpg",
     PROJECT_IMAGE2: "/assets/img/project2.jpg",

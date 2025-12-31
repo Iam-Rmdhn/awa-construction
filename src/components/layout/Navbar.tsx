@@ -9,7 +9,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { LiquidGlassCard } from '@/components/ui/liquid-glass-card';
 
-
 import { useLanguage } from '@/contexts/LanguageContext';
 import LanguageSwitcher from '@/components/ui/language-switcher';
 
@@ -21,8 +20,8 @@ export function Header() {
 	const links = [
 		{ label: t.nav.home, href: '/' },
 		{ label: t.nav.company, href: '#about' },
-		{ label: t.nav.project, href: '#projects' },
 		{ label: t.nav.service, href: '#services' },
+		{ label: t.nav.project, href: '#projects' },
 		{ label: t.nav.contact, href: '#contact' },
 	];
 
@@ -65,7 +64,7 @@ export function Header() {
 						{
 							"rounded-full bg-white/10": scrolled && !open,
 							"rounded-none bg-transparent shadow-none": !scrolled && !open,
-							"w-full h-16 max-w-7xl px-6": !scrolled && !open,
+							"w-full h-16 max-w-7xl px-6 md:px-[61px]": !scrolled && !open,
 							"w-full h-14 max-w-5xl px-8": scrolled && !open,
 							"bg-transparent h-auto rounded-none": open
 						}
@@ -132,8 +131,8 @@ export function Header() {
                                     </Link>
                                 )
                             ))}
-                            <div className="pl-4 border-l border-white/20">
-                                <LanguageSwitcher />
+                            <div className={cn("pl-4 border-l", isHeroState ? "border-white/20" : "border-foreground/20")}>
+                                <LanguageSwitcher variant={isHeroState ? "light" : "dark"} />
                             </div>
                         </div>
                         <Button 

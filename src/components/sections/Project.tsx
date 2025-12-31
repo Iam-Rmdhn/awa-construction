@@ -30,7 +30,7 @@ export default function FeaturedProjects() {
   return (
     <section className="bg-white" id="projects">
       {/* Featured Projects Section */}
-      <div className="py-24 container mx-auto px-6">
+      <div className="py-24 container mx-auto px-6 md:px-[61px]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -105,7 +105,7 @@ export default function FeaturedProjects() {
       </div>
 
       {/* Partner With Us Section */}
-      <div className="bg-[#0055FF] py-24 px-6 text-center text-white">
+      <div className="bg-[#0055FF] py-24 px-6 md:px-[61px] text-center text-white">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

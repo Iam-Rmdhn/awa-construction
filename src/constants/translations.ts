@@ -10,18 +10,22 @@ export const TRANSLATIONS = {
       contact: "Contact",
     },
     about: {
-      title: "Reviving Spaces, Building Futures",
-      description: "For 10+ years, we've revitalized heritage buildings and crafted new landmarks across Indonesia. Our integrated approach seamlessly blending design, construction, and maintenance breathes new life into existing properties while creating future-ready structures.",
-      stats: {
-        legacy: "Maximizing legacy value",
-        experience: "Years Of Experience",
-        project: "Successful Projects",
-        cost: "No hidden costs or surprises",
-      }
+      subtitle: "Who We Are",
+      title: "AWA CONSTRUCTION",
+      badge: "CV : Sadulur Sadaya",
+      headline: "Specialists in Construction/Renovation for Housing, Coffee Shops, and Shophouses",
+      intro: "We work with professional standards covering:",
+      list: [
+        "Transparent Budgeting (RAB)",
+        "Daily Supervision",
+        "Consultation Anytime",
+        "High Quality Standards"
+      ],
+      closing: "We are committed to delivering the best results with full attention to detail and client satisfaction."
     },
     services: {
-      title: "Our Integrated Service",
-      subtitle: "We Provide spectrum of services to meet your construction needs, from initial planning to that handover",
+      title: "OUR SERVICES",
+      subtitle: "We provide a spectrum of services to meet your construction needs, from initial planning to handover",
       items: {
         design: {
             title: "Design & Planning",
@@ -70,17 +74,21 @@ export const TRANSLATIONS = {
       contact: "Kontak",
     },
     about: {
-      title: "Menghidupkan Ruang, Membangun Masa Depan",
-      description: "Selama 10+ tahun, kami telah meremajakan bangunan bersejarah dan menciptakan landmark baru di seluruh Indonesia. Pendekatan terintegrasi kami yang memadukan desain, konstruksi, dan pemeliharaan memberikan kehidupan baru pada properti yang ada sambil menciptakan struktur siap masa depan.",
-      stats: {
-        legacy: "Memaksimalkan nilai warisan",
-        experience: "Tahun Pengalaman",
-        project: "Proyek Sukses",
-        cost: "Tanpa biaya tersembunyi",
-      }
+      subtitle: "Who We Are",
+      title: "AWA CONSTRUCTION",
+      badge: "CV : Sadulur Sadaya",
+      headline: "Spesialis Pembangunan/Renovasi Rumah, Coffee Shop, dan Ruko",
+      intro: "Kami bekerja dengan standar profesional mencakup:",
+      list: [
+        "RAB Transparan",
+        "Pengawasan Harian",
+        "Konsultasi Kapan saja",
+        "Standar Kualitas Tinggi"
+      ],
+      closing: "Kami berkomitmen untuk memberikan hasil yang terbaik dengan perhatian penuh pada detail dan kepuasan klien."
     },
     services: {
-      title: "Layanan Terintegrasi Kami",
+      title: "LAYANAN KAMI",
       subtitle: "Kami menyediakan spektrum layanan untuk memenuhi kebutuhan konstruksi Anda, dari perencanaan awal hingga serah terima",
       items: {
         design: {
@@ -130,17 +138,21 @@ export const TRANSLATIONS = {
       contact: "お問い合わせ",
     },
     about: {
-      title: "空間を再生し、未来を築く",
-      description: "10年以上にわたり、私たちはインドネシア全土で歴史的建造物を再生し、新しいランドマークを作り上げてきました。デザイン、建設、メンテナンスをシームレスに融合させた統合アプローチにより、既存の不動産に新たな命を吹き込みながら、未来に向けた構造物を創造します。",
-      stats: {
-        legacy: "遺産価値の最大化",
-        experience: "長年の経験",
-        project: "成功したプロジェクト",
-        cost: "隠れたコストなし",
-      }
+      subtitle: "私たちについて",
+      title: "AWA CONSTRUCTION",
+      badge: "CV : Sadulur Sadaya",
+      headline: "住宅、コーヒーショップ、店舗の建設・リノベーションのスペシャリスト",
+      intro: "私たちは以下の専門基準に従って仕事をしています：",
+      list: [
+        "透明性のある予算 (RAB)",
+        "毎日の監督",
+        "いつでも相談可能",
+        "高品質な基準"
+      ],
+      closing: "細部へのこだわりと顧客満足を重視し、最高の結果を提供することをお約束します。"
     },
     services: {
-      title: "当社の統合サービス",
+      title: "私たちのサービス",
       subtitle: "初期計画から引き渡しまで、お客様の建設ニーズを満たす幅広いサービスを提供します",
       items: {
         design: {

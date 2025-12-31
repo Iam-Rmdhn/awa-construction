@@ -10,12 +10,12 @@ export default function Footer() {
       {/* Background Elements */}
       <div className="absolute top-0 z-[-2] h-screen w-screen "></div>
       {/* Content */}
-      <div className="container relative z-10 mx-auto px-6 py-16">
+      <div className="container relative z-10 mx-auto px-6 md:px-[61px] py-16">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
           {/* Company Info */}
           <div className="flex flex-col space-y-4">
             <h2 className="text-3xl font-bold tracking-tight text-white">
-              PT AWA Construction
+              AWA Construction
             </h2>
             <p className="text-md leading-relaxed text-gray-200 max-w-xs">
               {t.footer.companyDesc}
@@ -119,7 +119,7 @@ export default function Footer() {
               {t.footer.officialAddress}
             </h3>
             <p className="text-md leading-relaxed text-gray-200">
-              Jalan Konoha raya
+              Jl. Sawo No. 156, RT: 04/01 Cipedak-Jagakarsa, Jakarta Selatan 12630
             </p>
           </div>
         </div>
