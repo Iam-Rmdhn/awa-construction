@@ -17,7 +17,7 @@ export const IMAGES = {
     SERVICES_IMAGE3: "/assets/img/service3.png",
 
     // project image
-    PROJECT_IMAGE1: "/assets/img/project1.jpg",
-    PROJECT_IMAGE2: "/assets/img/project2.jpg",
-    PROJECT_IMAGE3: "/assets/img/project3.jpg",
+    PROJECT_IMAGE1: "/assets/img/warnas.png",
+    PROJECT_IMAGE2: "/assets/img/masgaw.png",
+    PROJECT_IMAGE3: "/assets/img/dapursagawa.png",
 } as const;

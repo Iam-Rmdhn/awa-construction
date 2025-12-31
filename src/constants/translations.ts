@@ -44,6 +44,7 @@ export const TRANSLATIONS = {
     },
     projects: {
       title: "Featured Projects",
+      subtitle: "Recent Projects",
       floorArea: "Floor Area",
       viewAll: "View All Project",
       partner: {
@@ -108,6 +109,7 @@ export const TRANSLATIONS = {
     },
     projects: {
       title: "Proyek Unggulan",
+      subtitle: "Projek terakhir",
       floorArea: "Luas Lantai",
       viewAll: "Lihat Semua Proyek",
       partner: {
@@ -172,6 +174,7 @@ export const TRANSLATIONS = {
     },
     projects: {
       title: "注目のプロジェクト",
+      subtitle: "最近のプロジェクト",
       floorArea: "床面積",
       viewAll: "すべてのプロジェクトを見る",
       partner: {

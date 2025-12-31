@@ -53,7 +53,7 @@ export default function Services() {
         </motion.div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-[70px]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-[0.5px]">
           {services.map((service, index) => (
             <motion.div
               key={index}
@@ -65,7 +65,7 @@ export default function Services() {
                 delay: index * 0.2,
               }}
               viewport={{ once: true }}
-              className="relative flex flex-col w-[330px] h-[430px] mx-auto rounded-4xl overflow-hidden border-2 border-(--color-secondary) shadow-[8px_8px_0px_0px_var(--color-primary)] bg-white group transition-transform duration-300 md:hover:!-translate-y-3"
+              className="relative flex flex-col w-[330px] h-[430px] mx-auto rounded-4xl overflow-hidden border-2 border-(--color-secondary) shadow-[8px_8px_0px_0px_var(--color-primary)] bg-white group transition-transform duration-300 md:hover:-translate-y-3!"
             >
               {/* Image & Icon */}
               <div className="relative h-[65%] w-full bg-white p-6 flex items-center justify-center z-10">

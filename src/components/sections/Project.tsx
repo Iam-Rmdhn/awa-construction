@@ -2,130 +2,213 @@
 
 import { IMAGES } from "@/constants/images";
 import Image from "next/image";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { MapPin, Ruler, Clock, ArrowRight, ChevronDown } from "lucide-react";
+import { useState } from "react";
 
 export default function FeaturedProjects() {
   const { t } = useLanguage();
+  const [showAll, setShowAll] = useState(false);
 
   const projects = [
     {
-      title: "Retail Outlet Renovation",
-      floorArea: "250",
+      title: "Warung Selera Nusantara",
+      description: "Renovasi ruko berlantai 2 ini mengubahnya menjadi warung makan yang nyaman dan modern. Dengan desain interior yang efisien, material ramah lingkungan, dan penataan ruang yang optimal, kedua lantai memberikan suasana yang hangat dan fungsional, menciptakan pengalaman kuliner yang menyenangkan bagi pengunjung.",
+      type: "Renovasi",
+      year: "2025",
+      location: "Mampang Prapatan, Jakarta Selatan",
+      area: "4m x 12m (dua lantai)",
+      time: "3 Minggu",
       image: IMAGES.PROJECT_IMAGE1,
     },
     {
-      title: "Park Villa Remodel",
-      floorArea: "320",
+      title: "RM Mas Gaw",
+      description: "Renovasi ruko ini mengubahnya menjadi warung makan yang nyaman dengan desain interior modern dan fungsional. Penggunaan material ramah lingkungan dan penataan ruang yang efisien menciptakan suasana yang hangat, ideal untuk pengalaman kuliner yang menyenangkan.",
+      type: "Renovasi",
+      year: "2025",
+      location: "Margonda Raya, Depok",
+      area: "6 x 25m",
+      time: "3 Minggu",
       image: IMAGES.PROJECT_IMAGE2,
     },
     {
-      title: "Kitchen Restaurant Renovation",
-      floorArea: "480",
+      title: "Dapur Sagawa Group",
+      description: "Konstruksi dapur komersial yang dirancang untuk efisiensi operasional maksimal. Dilengkapi dengan sistem ventilasi modern dan tata letak yang ergonomis untuk mendukung produktivitas.",
+      type: "Konstruksi",
+      year: "2025",
+      location: "Bogor, Jawa Barat",
+      area: "4m x 7m",
+      time: "2 Minggu",
       image: IMAGES.PROJECT_IMAGE3,
     },
   ];
 
+  const visibleProjects = showAll ? projects : projects.slice(0, 2);
+
   return (
-    <section className="bg-white" id="projects">
-      {/* Featured Projects Section */}
-      <div className="py-24 container mx-auto px-6 md:px-[61px]">
+    <section className="relative bg-(--color-primary) overflow-hidden" id="projects">
+      {/* Diagonal Lines Decoration - Top */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-screen h-16 overflow-hidden">
+        <div className="absolute inset-0 flex justify-center">
+          {[...Array(60)].map((_, i) => (
+            <div
+              key={i}
+              className="w-8 h-full bg-white/10 -skew-x-12 mx-2 shrink-0"
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Projects Section */}
+      <div className="py-24 pt-32 container mx-auto px-6 md:px-[61px]">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="mb-16"
         >
-          <h2 className="text-4xl font-bold text-black mb-4">
+          <div className="flex items-center gap-4 mb-4">
+            <span className="h-[2px] w-8 bg-(--color-secondary)"></span>
+            <span className="font-nunito font-bold text-lg text-(--color-secondary) uppercase tracking-wider">
+              {t.projects.subtitle}
+            </span>
+          </div>
+          <h2 className="font-unbounded text-3xl md:text-4xl font-bold text-white text-center uppercase tracking-wide">
             {t.projects.title}
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {projects.map((project, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.5,
-                ease: "easeOut",
-                delay: index * 0.2,
-              }}
-              viewport={{ once: true }}
-              className="group bg-white rounded-3xl p-4 border border-gray-100 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all duration-300"
-            >
-              <div className="relative h-64 w-full rounded-3xl overflow-hidden mb-6">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-              <div className="px-2 pb-2">
-                <h3 className="text-lg font-bold text-black mb-1">
-                  {project.title}
-                </h3>
-                <p className="text-[#00CBF1] text-sm font-medium">
-                  {t.projects.floorArea} {project.floorArea} m²
-                </p>
-              </div>
-            </motion.div>
-          ))}
+        {/* Project Cards */}
+        <div className="space-y-12 mb-16">
+          <AnimatePresence mode="sync">
+            {visibleProjects.map((project, index) => (
+              <motion.div
+                key={project.title}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 20,
+                  duration: 0.6,
+                  delay: index * 0.1,
+                }}
+                className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8 bg-[#2E5F9E] p-6 overflow-hidden rounded-[24px]`}
+                style={{
+                  clipPath: index % 2 === 0
+                    ? 'polygon(120px 0, 100% 0, 100% 100%, 0 100%, 0 120px)'
+                    : 'polygon(0 0, calc(100% - 120px) 0, 100% 120px, 100% 100%, 0 100%)'
+                }}
+              >
+                {/* Thumbnail */}
+                <div 
+                  className="relative w-full md:w-1/2 h-64 md:h-80 rounded-[22px] overflow-hidden shrink-0"
+                  style={{
+                    clipPath: index % 2 === 0
+                      ? 'polygon(110px 0, 100% 0, 100% 100%, 0 100%, 0 110px)'
+                      : 'polygon(0 0, calc(100% - 110px) 0, 100% 110px, 100% 100%, 0 100%)'
+                  }}
+                >
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover"
+                  />
+                  {/* Glass Badges */}
+                  <div className="absolute bottom-4 left-4 flex gap-3">
+                    <div className="px-4 py-2 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white font-bold text-sm">
+                      {project.year}
+                    </div>
+                    <div className="px-4 py-2 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white font-bold text-sm">
+                      {project.type}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="flex flex-col justify-center w-full md:w-1/2 text-white">
+                  <h3 className="font-unbounded text-xl md:text-2xl font-bold mb-4 uppercase">
+                    {project.title}
+                  </h3>
+                  <p className="font-nunito text-white/80 text-sm md:text-base leading-relaxed mb-6">
+                    {project.description}
+                  </p>
+
+                  {/* Details */}
+                  <div className="space-y-3 mb-6">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-(--color-secondary) flex items-center justify-center">
+                        <MapPin size={16} className="text-white" />
+                      </div>
+                      <span className="font-nunito text-sm">Lokasi: {project.location}</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-(--color-secondary) flex items-center justify-center">
+                        <Ruler size={16} className="text-white" />
+                      </div>
+                      <span className="font-nunito text-sm">Luas Area: {project.area}</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-(--color-secondary) flex items-center justify-center">
+                        <Clock size={16} className="text-white" />
+                      </div>
+                      <span className="font-nunito text-sm">Waktu Pengerjaan: {project.time}</span>
+                    </div>
+                  </div>
+
+                  {/* Link */}
+                  <Link
+                    href="#"
+                    className="inline-flex items-center gap-2 text-(--color-secondary) font-bold text-sm hover:gap-3 transition-all group"
+                  >
+                    <span className="underline underline-offset-4">Lihat detail</span>
+                    <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+                  </Link>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
-          viewport={{ once: true }}
-          className="text-center"
-        >
-          <button className="group bg-[#0055FF] text-white px-8 py-3 rounded-full font-semibold inline-flex items-center gap-2 hover:bg-blue-600 transition-colors shadow-lg shadow-blue-500/30">
-            {t.projects.viewAll}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={2}
-              stroke="currentColor"
-              className="w-5 h-5 transition-transform group-hover:translate-x-1"
+        {/* View All Button */}
+        {projects.length > 2 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className="inline-flex items-center gap-2 bg-(--color-secondary) text-white px-10 py-4 rounded-full font-bold text-lg transition-all cursor-pointer hover:shadow-[4px_4px_0px_0px_var(--color-tertiary)]"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+              <span>{showAll ? 'Tampilkan Lebih Sedikit' : 'Lihat Semua'}</span>
+              <ChevronDown 
+                size={22} 
+                className={`transition-transform duration-300 ${showAll ? 'rotate-180' : ''}`} 
               />
-            </svg>
-          </button>
-        </motion.div>
+            </button>
+          </motion.div>
+        )}
       </div>
 
-      {/* Partner With Us Section */}
-      <div className="bg-[#0055FF] py-24 px-6 md:px-[61px] text-center text-white">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          viewport={{ once: true }}
-          className="max-w-4xl mx-auto"
-        >
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
-            {t.projects.partner.title}
-          </h2>
-          <p className="text-white/90 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed font-light">
-            {t.projects.partner.desc}
-          </p>
-          <Link
-            href="#"
-            className="inline-block bg-white text-[#0055FF] px-10 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-colors shadow-xl"
-          >
-            {t.projects.partner.cta}
-          </Link>
-        </motion.div>
+      {/* Diagonal Lines Decoration - Bottom */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-screen h-16 overflow-hidden">
+        <div className="absolute inset-0 flex justify-center">
+          {[...Array(60)].map((_, i) => (
+            <div
+              key={i}
+              className="w-8 h-full bg-white/10 -skew-x-12 mx-2 shrink-0"
+            />
+          ))}
+        </div>
       </div>
     </section>
   );

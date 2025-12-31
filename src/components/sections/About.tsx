@@ -32,8 +32,8 @@ export default function About() {
               {t.about.title}
             </h2>
 
-            <div className="bg-slate-100 border-l-4 border-[--color-primary] py-3 px-5 rounded-r-lg w-fit">
-              <span className="font-nunito font-bold text-slate-700 text-lg">
+            <div className="bg-slate-200 border-l-4 border-(--color-primary) py-3 px-5 rounded-2xl w-fit">
+              <span className="font-nunito font-bold text-gray-700 text-lg">
                 {t.about.badge}
               </span>
             </div>
@@ -45,10 +45,10 @@ export default function About() {
             <div className="font-nunito text-gray-600 text-lg space-y-6">
               <p>{t.about.intro}</p>
               
-              <ul className="space-y-4">
+              <ul className="space-y-4 ml-8">
                 {t.about.list.map((item, index) => (
                   <li key={index} className="flex items-center gap-4">
-                    <div className="shrink-0 w-8 h-8 rounded-full bg-[--color-secondary]/20 flex items-center justify-center text-[--color-secondary]">
+                    <div className="shrink-0 w-8 h-8 rounded-full bg-(--color-secondary) flex items-center justify-center text-white">
                       <Check size={18} strokeWidth={3} />
                     </div>
                     <span className="font-medium text-gray-700">{item}</span>
