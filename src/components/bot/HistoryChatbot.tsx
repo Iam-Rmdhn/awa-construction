@@ -1,6 +1,14 @@
 "use client";
 
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  useCallback,
+} from "react";
+import { Language } from "@/constants/translations";
+import { getInitialMessage } from "./TranslationBot";
 
 export interface ChatMessage {
   id: string;
@@ -20,6 +28,7 @@ interface ChatHistoryContextType {
   messages: ChatMessage[];
   addMessage: (message: Omit<ChatMessage, "id" | "timestamp">) => void;
   clearHistory: () => void;
+  initializeWithLanguage: (language: Language) => void;
 }
 
 const ChatHistoryContext = createContext<ChatHistoryContextType | undefined>(
@@ -39,19 +48,22 @@ export function ChatHistoryProvider({ children }: { children: ReactNode }) {
     },
   ]);
 
-  const addMessage = (message: Omit<ChatMessage, "id" | "timestamp">) => {
-    const newMessage: ChatMessage = {
-      ...message,
-      id: Date.now().toString(),
-      timestamp: new Date().toLocaleTimeString("id-ID", {
-        hour: "2-digit",
-        minute: "2-digit",
-      }),
-    };
-    setMessages((prev) => [...prev, newMessage]);
-  };
+  const addMessage = useCallback(
+    (message: Omit<ChatMessage, "id" | "timestamp">) => {
+      const newMessage: ChatMessage = {
+        ...message,
+        id: Date.now().toString(),
+        timestamp: new Date().toLocaleTimeString("id-ID", {
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
+      };
+      setMessages((prev) => [...prev, newMessage]);
+    },
+    []
+  );
 
-  const clearHistory = () => {
+  const clearHistory = useCallback(() => {
     setMessages([
       {
         id: "1",
@@ -63,10 +75,26 @@ export function ChatHistoryProvider({ children }: { children: ReactNode }) {
         }),
       },
     ]);
-  };
+  }, []);
+
+  const initializeWithLanguage = useCallback((language: Language) => {
+    setMessages([
+      {
+        id: "1",
+        type: "bot",
+        content: getInitialMessage(language),
+        timestamp: new Date().toLocaleTimeString("id-ID", {
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
+      },
+    ]);
+  }, []);
 
   return (
-    <ChatHistoryContext.Provider value={{ messages, addMessage, clearHistory }}>
+    <ChatHistoryContext.Provider
+      value={{ messages, addMessage, clearHistory, initializeWithLanguage }}
+    >
       {children}
     </ChatHistoryContext.Provider>
   );

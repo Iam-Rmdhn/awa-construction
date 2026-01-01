@@ -10,16 +10,15 @@ import {
   getServiceResponse,
   getDefaultResponse,
 } from "./ServiceBot";
-import {
-  detectGreeting,
-  getGreetingResponse,
-} from "./Logicbot";
+import { detectGreeting, getGreetingResponse } from "./Logicbot";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface MobileChatbotProps {
   onClose: () => void;
 }
 
 export default function MobileChatbot({ onClose }: MobileChatbotProps) {
+  const { language } = useLanguage();
   const [inputValue, setInputValue] = useState("");
   const chatAreaRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
@@ -47,7 +46,7 @@ export default function MobileChatbot({ onClose }: MobileChatbotProps) {
       setTimeout(() => {
         addMessage({
           type: "bot",
-          content: getGreetingResponse(inputValue),
+          content: getGreetingResponse(inputValue, language),
         });
       }, 500);
     } else if (detectServiceQuestion(inputValue)) {
@@ -55,8 +54,8 @@ export default function MobileChatbot({ onClose }: MobileChatbotProps) {
       setTimeout(() => {
         addMessage({
           type: "bot",
-          content: getServiceResponse(),
-          options: getServiceOptions(),
+          content: getServiceResponse(language),
+          options: getServiceOptions(language),
         });
       }, 500);
     } else {
@@ -64,7 +63,7 @@ export default function MobileChatbot({ onClose }: MobileChatbotProps) {
       setTimeout(() => {
         addMessage({
           type: "bot",
-          content: getDefaultResponse(),
+          content: getDefaultResponse(language),
         });
       }, 500);
     }

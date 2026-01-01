@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import { Bot, X, Send } from "lucide-react";
 import { useRouter } from "next/navigation";
 import MobileChatbot from "./MobileChatbot";
@@ -11,22 +11,29 @@ import {
   getServiceResponse,
   getDefaultResponse,
 } from "./ServiceBot";
-import {
-  detectGreeting,
-  getGreetingResponse,
-  getTimedGreetingResponse,
-} from "./Logicbot";
+import { detectGreeting, getGreetingResponse } from "./Logicbot";
+import { getTooltipGreeting } from "./TranslationBot";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Chatbot() {
+  const { language } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
-  const [currentGreeting, setCurrentGreeting] = useState(
-    getTimedGreetingResponse()
-  );
   const [isVisible, setIsVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const chatAreaRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
-  const { messages, addMessage } = useChatHistory();
+  const { messages, addMessage, initializeWithLanguage } = useChatHistory();
+
+  // sapaan tooltip
+  const currentGreeting = useMemo(
+    () => getTooltipGreeting(language),
+    [language]
+  );
+
+  // Saat ubah bahasa
+  useEffect(() => {
+    initializeWithLanguage(language);
+  }, [language, initializeWithLanguage]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,15 +71,15 @@ export default function Chatbot() {
       setTimeout(() => {
         addMessage({
           type: "bot",
-          content: getGreetingResponse(inputValue),
+          content: getGreetingResponse(inputValue, language),
         });
       }, 500);
     } else if (detectServiceQuestion(inputValue)) {
       setTimeout(() => {
         addMessage({
           type: "bot",
-          content: getServiceResponse(),
-          options: getServiceOptions(),
+          content: getServiceResponse(language),
+          options: getServiceOptions(language),
         });
       }, 500);
     } else {
@@ -80,7 +87,7 @@ export default function Chatbot() {
       setTimeout(() => {
         addMessage({
           type: "bot",
-          content: getDefaultResponse(),
+          content: getDefaultResponse(language),
         });
       }, 500);
     }
@@ -100,10 +107,6 @@ export default function Chatbot() {
     }
   };
 
-  const handleMouseEnter = () => {
-    setCurrentGreeting(getTimedGreetingResponse());
-  };
-
   return (
     <>
       {/* Floating Button */}
@@ -116,10 +119,7 @@ export default function Chatbot() {
             : "opacity-0 translate-y-10 pointer-events-none"
         }`}
       >
-        <div
-          className="group relative flex items-center"
-          onMouseEnter={handleMouseEnter}
-        >
+        <div className="group relative flex items-center">
           {/* Tooltip */}
           {!isOpen && (
             <div className="absolute right-full mr-4 bg-gray-100 px-4 py-2 rounded-xl shadow-md text-sm font-nunito text-gray-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
