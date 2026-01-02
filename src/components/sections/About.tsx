@@ -63,7 +63,7 @@ export default function About() {
             </div>
           </motion.div>
 
-          {/* Image Grid */}
+          {/* Images */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -71,42 +71,32 @@ export default function About() {
             viewport={{ once: true, margin: "-100px" }}
             className="w-full lg:w-1/2"
           >
-            <div className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-6">
-              <div className="space-y-3 sm:space-y-4 md:space-y-6">
-                <div className="relative h-32 sm:h-40 md:h-64 w-full rounded-2xl md:rounded-4xl overflow-hidden shadow-lg transform hover:scale-[1.02] transition-transform duration-500">
-                  <Image
-                    src={IMAGES.ABOUT_IMAGE1}
-                    alt="Construction Site 1"
+            <div className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-6 h-full">
+              <div className="relative w-full h-full min-h-[300px] md:min-h-[500px] rounded-2xl md:rounded-4xl overflow-hidden shadow-[6px_6px_0px_var(--color-primary)]">
+                <Image 
+                    src={IMAGES.ABOUT_IMAGE1} 
+                    alt="About Main"
                     fill
                     className="object-cover"
-                  />
-                </div>
-                <div className="relative h-32 sm:h-40 md:h-64 w-full rounded-2xl md:rounded-4xl overflow-hidden shadow-lg transform hover:scale-[1.02] transition-transform duration-500">
-                  <Image
-                    src={IMAGES.ABOUT_IMAGE3}
-                    alt="Construction Worker"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
+                />
               </div>
-              <div className="space-y-3 sm:space-y-4 md:space-y-6 pt-4 sm:pt-6 md:pt-12">
-                <div className="relative h-32 sm:h-40 md:h-64 w-full rounded-2xl md:rounded-4xl overflow-hidden shadow-lg transform hover:scale-[1.02] transition-transform duration-500">
-                  <Image
-                    src={IMAGES.ABOUT_IMAGE2}
-                    alt="Framework Construction"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="relative h-32 sm:h-40 md:h-64 w-full rounded-2xl md:rounded-4xl overflow-hidden shadow-lg transform hover:scale-[1.02] transition-transform duration-500">
-                  <Image
-                    src={IMAGES.ABOUT_IMAGE4}
-                    alt="House Building"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
+              <div className="flex flex-col gap-3 sm:gap-4 md:gap-6 h-full">
+                  <div className="relative w-full flex-1 rounded-2xl md:rounded-4xl overflow-hidden shadow-[6px_6px_0px_var(--color-primary)]">
+                      <Image 
+                          src={IMAGES.ABOUT_IMAGE2} 
+                          alt="About Secondary Top"
+                          fill
+                          className="object-cover"
+                      />
+                  </div>
+                  <div className="relative w-full flex-1 rounded-2xl md:rounded-4xl overflow-hidden shadow-[6px_6px_0px_var(--color-primary)]">
+                      <Image 
+                          src={IMAGES.ABOUT_IMAGE3} 
+                          alt="About Secondary Bottom"
+                          fill
+                          className="object-cover"
+                      />
+                  </div>
               </div>
             </div>
           </motion.div>

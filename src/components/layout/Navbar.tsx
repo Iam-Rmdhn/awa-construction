@@ -16,6 +16,42 @@ export function Header() {
 	const [open, setOpen] = React.useState(false);
 	const scrolled = useScroll(10);
     const { t } = useLanguage();
+    const [navTheme, setNavTheme] = React.useState<'light' | 'dark'>('dark');
+
+    React.useEffect(() => {
+        const handleScrollTheme = () => {
+            const offset = 80;
+            const currentPos = window.scrollY + offset;
+            
+            const sections = [
+                { id: 'hero', theme: 'dark' },
+                { id: 'about', theme: 'light' },
+                { id: 'services', theme: 'light' },
+                { id: 'projects', theme: 'dark' },
+                { id: 'contact', theme: 'dark' }
+            ] as const;
+
+            // Default to dark (hero) if at very top
+            if (currentPos < window.innerHeight / 2 && currentPos < 500) {
+                 // Safe fallback for hero
+            }
+
+            for (const section of sections) {
+                const element = document.getElementById(section.id);
+                if (element) {
+                    const { offsetTop, offsetHeight } = element;
+                    if (currentPos >= offsetTop && currentPos < offsetTop + offsetHeight) {
+                        setNavTheme(section.theme);
+                        break;
+                    }
+                }
+            }
+        };
+
+        window.addEventListener('scroll', handleScrollTheme);
+        handleScrollTheme();
+        return () => window.removeEventListener('scroll', handleScrollTheme);
+    }, []);
 
 	const links = [
 		{ label: t.nav.home, href: '/' },
@@ -35,8 +71,6 @@ export function Header() {
 			document.body.style.overflow = '';
 		};
 	}, [open]);
-
-	const isHeroState = !scrolled && !open;
 
 	return (
 		<header
@@ -93,7 +127,7 @@ export function Header() {
                                 className={cn(
                                     "h-10 w-auto transition-all duration-300",
                                     {
-                                        "brightness-0 invert": (isHeroState && !open) || open
+                                        "brightness-0 invert": navTheme === 'dark' || open
                                     }
                                 )}
                                 priority
@@ -105,12 +139,12 @@ export function Header() {
                                     <Link
                                         key={i}
                                         href={link.href}
-                                        className="group relative cursor-pointer w-auto px-6 h-10 border bg-white rounded-full overflow-hidden text-black font-unbounded flex items-center justify-center"
+                                        className="group relative cursor-pointer w-auto px-6 h-10 bg-white rounded-full overflow-hidden text-black font-unbounded flex items-center justify-center"
                                     >
                                         <span className="translate-y-0 group-hover:-translate-y-12 group-hover:opacity-0 transition-all duration-300 inline-block">
                                             {link.label}
                                         </span>
-                                        <div className="flex gap-2 text-white bg-[#02D2F6] z-10 items-center absolute left-0 top-0 h-full w-full justify-center translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 rounded-full">
+                                        <div className="flex gap-2 text-white bg-[#FEB05D] z-10 items-center absolute left-0 top-0 h-full w-full justify-center translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 rounded-full">
                                             <span>{link.label}</span>
                                         </div>
                                     </Link>
@@ -121,8 +155,8 @@ export function Header() {
                                             "text-base font-unbounded relative py-2",
                                             "after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-current after:transition-transform after:duration-300 hover:after:origin-bottom-left hover:after:scale-x-100",
                                             {
-                                                "text-white": isHeroState && !open,
-                                                "text-foreground hover:text-foreground/80": !isHeroState || open
+                                                "text-white": navTheme === 'dark' || open,
+                                                "text-foreground hover:text-foreground/80": navTheme === 'light' && !open
                                             }
                                         )}
                                         href={link.href}
@@ -131,8 +165,8 @@ export function Header() {
                                     </Link>
                                 )
                             ))}
-                            <div className={cn("pl-4 border-l", isHeroState ? "border-white/20" : "border-foreground/20")}>
-                                <LanguageSwitcher variant={isHeroState ? "light" : "dark"} displayMode="icon" />
+                            <div className={cn("pl-4 border-l", (navTheme === 'dark' || open) ? "border-white/20" : "border-foreground/20")}>
+                                <LanguageSwitcher variant={(navTheme === 'dark' || open) ? "light" : "dark"} displayMode="icon" />
                             </div>
                         </div>
                         <Button 
@@ -142,8 +176,8 @@ export function Header() {
                             className={cn(
                                 "md:hidden relative z-40 hover:bg-transparent transition-colors duration-300",
                                 {
-                                    "text-white hover:text-white/80": isHeroState || open,
-                                    "text-black hover:text-black/80": !isHeroState && !open
+                                    "text-white hover:text-white/80": navTheme === 'dark' || open,
+                                    "text-black hover:text-black/80": navTheme === 'light' && !open
                                 }
                             )}
                         >
