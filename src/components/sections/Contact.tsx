@@ -19,6 +19,7 @@ export default function Contact() {
           alt="Blueprint Decoration"
           fill
           className="object-contain object-bottom-right"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </div>
 

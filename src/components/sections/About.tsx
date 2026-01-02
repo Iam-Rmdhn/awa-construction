@@ -78,6 +78,7 @@ export default function About() {
                     alt="About Main"
                     fill
                     className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
               <div className="flex flex-col gap-3 sm:gap-4 md:gap-6 h-full">
@@ -87,7 +88,7 @@ export default function About() {
                           alt="About Secondary Top"
                           fill
                           className="object-cover"
-                      />
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"                      />
                   </div>
                   <div className="relative w-full flex-1 rounded-2xl md:rounded-4xl overflow-hidden shadow-[6px_6px_0px_var(--color-primary)]">
                       <Image 
@@ -95,6 +96,7 @@ export default function About() {
                           alt="About Secondary Bottom"
                           fill
                           className="object-cover"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                   </div>
               </div>

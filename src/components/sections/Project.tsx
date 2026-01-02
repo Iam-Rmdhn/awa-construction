@@ -76,6 +76,7 @@ export default function FeaturedProjects() {
           alt={project.title}
           fill
           className="object-cover"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         <div className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4 flex gap-2 sm:gap-3">
           <div className="px-2 py-1 sm:px-4 sm:py-2 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-gray-700 font-bold text-xs sm:text-sm">

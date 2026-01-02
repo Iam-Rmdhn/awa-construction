@@ -86,6 +86,7 @@ export default function Services() {
                     alt={service.title}
                     fill
                     className="object-contain p-2"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                 </div>
 
@@ -105,9 +106,9 @@ export default function Services() {
 
               {/* Description */}
               <div className="h-[35%] bg-(--color-secondary) px-6 pb-6 pt-12 flex items-center justify-center relative z-0">
-                 <p className="font-nunito text-white text-center text-sm md:text-base leading-relaxed">
+                <p className="font-nunito text-white text-center text-sm md:text-base leading-relaxed">
                   {service.description}
-                 </p>
+                </p>
               </div>
             </motion.div>
           ))}
