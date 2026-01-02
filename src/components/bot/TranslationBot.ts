@@ -48,20 +48,20 @@ export function getServiceOptions(language: Language) {
     {
       label: options.consultation,
       action: "navigate" as const,
-      value: "/konsultasi",
+      value: "/consultation",
     },
     {
       label: options.construction,
       action: "navigate" as const,
-      value: "/konstruksi",
+      value: "/construction",
     },
   ];
 }
 
 /**
  * Get default response untuk pertanyaan yang tidak dikenali
- * @param language - Bahasa yang dipilih user
- * @returns Default response dalam bahasa yang sesuai
+  @param language - Bahasa yang dipilih user
+  @returns Default response dalam bahasa yang sesuai
  */
 export function getDefaultResponse(language: Language): string {
   return TRANSLATIONS[language].chatbot.responses.defaultResponse;
@@ -69,8 +69,8 @@ export function getDefaultResponse(language: Language): string {
 
 /**
  * Get tooltip greeting berdasarkan waktu untuk hover state
- * @param language - Bahasa yang dipilih user
- * @returns Tooltip greeting dalam bahasa yang sesuai
+  @param language - Bahasa yang dipilih user
+  @returns Tooltip greeting dalam bahasa yang sesuai
  */
 export function getTooltipGreeting(language: Language): string {
   const hour = new Date().getHours();
@@ -87,11 +87,8 @@ export function getTooltipGreeting(language: Language): string {
 
 /**
  * Detect bahasa dari input message user
- * Fungsi ini akan mendeteksi bahasa berdasarkan kata kunci yang digunakan
- * Berguna untuk auto-detect jika user mengetik dalam bahasa tertentu
- *
- * @param message - Message dari user
- * @returns Detected language (id, en, atau ja)
+  @param message - Message dari user
+  @returns Detected language (id, en, atau ja)
  */
 export function detectMessageLanguage(message: string): Language {
   const lowerMessage = message.toLowerCase().trim();
