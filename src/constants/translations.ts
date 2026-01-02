@@ -12,7 +12,7 @@ export const TRANSLATIONS = {
     about: {
       subtitle: "Who We Are",
       title: "AWA CONSTRUCTION",
-      badge: "CV : Sadulur Sadaya",
+      badge: "By SAGAWA GROUP",
       headline:
         "Specialists in Construction/Renovation for Housing, Coffee Shops, and Shophouses",
       intro: "We work with professional standards covering:",
@@ -75,6 +75,8 @@ export const TRANSLATIONS = {
         careers: "Careers",
         contact: "Contact Us",
       },
+      location: "Location",
+      followUs: "Follow Us",
     },
     chatbot: {
       greeting: {
@@ -148,7 +150,7 @@ export const TRANSLATIONS = {
     about: {
       subtitle: "Who We Are",
       title: "AWA CONSTRUCTION",
-      badge: "CV : Sadulur Sadaya",
+      badge: "By SAGAWA GROUP",
       headline: "Spesialis Pembangunan/Renovasi Rumah, Coffee Shop, dan Ruko",
       intro: "Kami bekerja dengan standar profesional mencakup:",
       list: [
@@ -210,6 +212,8 @@ export const TRANSLATIONS = {
         careers: "Karir",
         contact: "Hubungi Kami",
       },
+      location: "Lokasi",
+      followUs: "Ikuti Kami",
     },
     chatbot: {
       greeting: {
@@ -284,7 +288,7 @@ export const TRANSLATIONS = {
     about: {
       subtitle: "私たちについて",
       title: "AWA CONSTRUCTION",
-      badge: "CV : Sadulur Sadaya",
+      badge: "By SAGAWA GROUP",
       headline:
         "住宅、コーヒーショップ、店舗の建設・リノベーションのスペシャリスト",
       intro: "私たちは以下の専門基準に従って仕事をしています：",
@@ -347,6 +351,8 @@ export const TRANSLATIONS = {
         careers: "キャリア",
         contact: "お問い合わせ",
       },
+      location: "所在地",
+      followUs: "フォローする",
     },
     chatbot: {
       greeting: {
