@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'motion/react';
+import { LoadingSpin } from '@/components/ui/loading-spin';
 
 export default function SplashScreen() {
   const [isVisible, setIsVisible] = useState(true);
@@ -35,7 +36,7 @@ export default function SplashScreen() {
             initial={{ scale: 0.8, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="relative"
+            className="relative flex flex-col items-center gap-8"
           >
             <Image
               src="/awa_contruction_logo.svg"
@@ -45,6 +46,7 @@ export default function SplashScreen() {
               className="w-64 h-auto md:w-80"
               priority
             />
+            <LoadingSpin />
           </motion.div>
         </motion.div>
       )}
