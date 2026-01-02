@@ -45,7 +45,89 @@ export default function FeaturedProjects() {
     },
   ];
 
-  const visibleProjects = showAll ? projects : projects.slice(0, 2);
+  const ProjectCard = ({ project, index }: { project: typeof projects[number], index: number }) => (
+    <motion.div
+      initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{
+        type: "spring",
+        stiffness: 100,
+        damping: 20,
+        duration: 0.6,
+      }}
+      className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-4 md:gap-8 bg-[#2E5F9E] p-4 md:p-6 overflow-hidden rounded-2xl md:rounded-[24px]`}
+      style={{
+        clipPath: index % 2 === 0
+          ? 'polygon(60px 0, 100% 0, 100% 100%, 0 100%, 0 60px)'
+          : 'polygon(0 0, calc(100% - 60px) 0, 100% 60px, 100% 100%, 0 100%)'
+      }}
+    >
+      <div 
+        className="relative w-full md:w-1/2 h-48 sm:h-56 md:h-80 rounded-xl md:rounded-[22px] overflow-hidden shrink-0"
+        style={{
+          clipPath: index % 2 === 0
+            ? 'polygon(50px 0, 100% 0, 100% 100%, 0 100%, 0 50px)'
+            : 'polygon(0 0, calc(100% - 50px) 0, 100% 50px, 100% 100%, 0 100%)'
+        }}
+      >
+        <Image
+          src={project.image}
+          alt={project.title}
+          fill
+          className="object-cover"
+        />
+        <div className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4 flex gap-2 sm:gap-3">
+          <div className="px-2 py-1 sm:px-4 sm:py-2 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-gray-700 font-bold text-xs sm:text-sm">
+            {project.year}
+          </div>
+          <div className="px-2 py-1 sm:px-4 sm:py-2 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-gray-700 font-bold text-xs sm:text-sm">
+            {project.type}
+          </div>
+        </div>
+      </div>
+      {/* Content */}
+      <div className="flex flex-col justify-center w-full md:w-1/2 text-white">
+        <h3 className="font-unbounded letter-spacing-[8%] text-lg sm:text-xl md:text-2xl font-bold mb-2 md:mb-4 uppercase">
+          {project.title}
+        </h3>
+        <p className="font-nunito text-white/80 text-xs sm:text-sm md:text-base leading-relaxed mb-4 md:mb-6 line-clamp-3 md:line-clamp-none">
+          {project.description}
+        </p>
+        <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
+          <div className="flex items-center gap-2 md:gap-3">
+            <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-(--color-secondary) flex items-center justify-center">
+              <MapPinned size={12} className="text-white md:hidden" />
+              <MapPinned size={16} className="text-white hidden md:block" />
+            </div>
+            <span className="font-nunito text-xs md:text-sm">Lokasi: {project.location}</span>
+          </div>
+          <div className="flex items-center gap-2 md:gap-3">
+            <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-(--color-secondary) flex items-center justify-center">
+              <LandPlot size={12} className="text-white md:hidden" />
+              <LandPlot size={16} className="text-white hidden md:block" />
+            </div>
+            <span className="font-nunito text-xs md:text-sm">Luas Area: {project.area}</span>
+          </div>
+          <div className="flex items-center gap-2 md:gap-3">
+            <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-(--color-secondary) flex items-center justify-center">
+              <AlarmClock size={12} className="text-white md:hidden" />
+              <AlarmClock size={16} className="text-white hidden md:block" />
+            </div>
+            <span className="font-nunito text-xs md:text-sm">Waktu Pengerjaan: {project.time}</span>
+          </div>
+        </div>
+        {/* Link */}
+        <Link
+          href="#"
+          className="inline-flex items-center gap-2 text-(--color-secondary) font-bold text-sm hover:gap-3 transition-all group"
+        >
+          <span className="underline underline-offset-4">Lihat detail</span>
+          <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+        </Link>
+      </div>
+    </motion.div>
+  );
 
   return (
     <section className="relative bg-(--color-primary) overflow-hidden" id="projects">
@@ -82,93 +164,31 @@ export default function FeaturedProjects() {
         </motion.div>
 
         {/* Project Cards */}
-        <div className="space-y-8 md:space-y-12 mb-8 md:mb-16">
-          <AnimatePresence mode="sync">
-            {visibleProjects.map((project, index) => (
+        <div className="mb-8 md:mb-16">
+          {/* Always visible projects - First 2 */}
+          <div className="flex flex-col gap-8 md:gap-12">
+            {projects.slice(0, 2).map((project, index) => (
+               <ProjectCard key={project.title} project={project} index={index} />
+            ))}
+          </div>
+
+          {/* Expandable projects - The rest */}
+          <AnimatePresence>
+            {showAll && (
               <motion.div
-                key={project.title}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 100,
-                  damping: 20,
-                  duration: 0.6,
-                  delay: index * 0.1,
-                }}
-                className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-4 md:gap-8 bg-[#2E5F9E] p-4 md:p-6 overflow-hidden rounded-2xl md:rounded-[24px]`}
-                style={{
-                  clipPath: index % 2 === 0
-                    ? 'polygon(60px 0, 100% 0, 100% 100%, 0 100%, 0 60px)'
-                    : 'polygon(0 0, calc(100% - 60px) 0, 100% 60px, 100% 100%, 0 100%)'
-                }}
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+                className="overflow-hidden"
               >
-                <div 
-                  className="relative w-full md:w-1/2 h-48 sm:h-56 md:h-80 rounded-xl md:rounded-[22px] overflow-hidden shrink-0"
-                  style={{
-                    clipPath: index % 2 === 0
-                      ? 'polygon(50px 0, 100% 0, 100% 100%, 0 100%, 0 50px)'
-                      : 'polygon(0 0, calc(100% - 50px) 0, 100% 50px, 100% 100%, 0 100%)'
-                  }}
-                >
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4 flex gap-2 sm:gap-3">
-                    <div className="px-2 py-1 sm:px-4 sm:py-2 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-gray-700 font-bold text-xs sm:text-sm">
-                      {project.year}
-                    </div>
-                    <div className="px-2 py-1 sm:px-4 sm:py-2 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-gray-700 font-bold text-xs sm:text-sm">
-                      {project.type}
-                    </div>
-                  </div>
-                </div>
-                {/* Content */}
-                <div className="flex flex-col justify-center w-full md:w-1/2 text-white">
-                  <h3 className="font-unbounded letter-spacing-[8%] text-lg sm:text-xl md:text-2xl font-bold mb-2 md:mb-4 uppercase">
-                    {project.title}
-                  </h3>
-                  <p className="font-nunito text-white/80 text-xs sm:text-sm md:text-base leading-relaxed mb-4 md:mb-6 line-clamp-3 md:line-clamp-none">
-                    {project.description}
-                  </p>
-                  <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
-                    <div className="flex items-center gap-2 md:gap-3">
-                      <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-(--color-secondary) flex items-center justify-center">
-                        <MapPinned size={12} className="text-white md:hidden" />
-                        <MapPinned size={16} className="text-white hidden md:block" />
-                      </div>
-                      <span className="font-nunito text-xs md:text-sm">Lokasi: {project.location}</span>
-                    </div>
-                    <div className="flex items-center gap-2 md:gap-3">
-                      <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-(--color-secondary) flex items-center justify-center">
-                        <LandPlot size={12} className="text-white md:hidden" />
-                        <LandPlot size={16} className="text-white hidden md:block" />
-                      </div>
-                      <span className="font-nunito text-xs md:text-sm">Luas Area: {project.area}</span>
-                    </div>
-                    <div className="flex items-center gap-2 md:gap-3">
-                      <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-(--color-secondary) flex items-center justify-center">
-                        <AlarmClock size={12} className="text-white md:hidden" />
-                        <AlarmClock size={16} className="text-white hidden md:block" />
-                      </div>
-                      <span className="font-nunito text-xs md:text-sm">Waktu Pengerjaan: {project.time}</span>
-                    </div>
-                  </div>
-                  {/* Link */}
-                  <Link
-                    href="#"
-                    className="inline-flex items-center gap-2 text-(--color-secondary) font-bold text-sm hover:gap-3 transition-all group"
-                  >
-                    <span className="underline underline-offset-4">Lihat detail</span>
-                    <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
-                  </Link>
+                <div className="flex flex-col gap-8 md:gap-12 pt-8 md:pt-12">
+                  {projects.slice(2).map((project, index) => (
+                    <ProjectCard key={project.title} project={project} index={index + 2} />
+                  ))}
                 </div>
               </motion.div>
-            ))}
+            )}
           </AnimatePresence>
         </div>
         {/* View All Button */}
