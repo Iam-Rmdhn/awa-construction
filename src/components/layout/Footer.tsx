@@ -52,7 +52,7 @@ export default function Footer() {
           className="relative w-full flex justify-center items-center mb-16 select-none"
         >
           <h1 
-            className="font-unbounded font-black text-[10vw] md:text-[8vw] lg:text-[7vw] leading-none tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-gray-200 to-gray-400"
+            className="font-unbounded font-black text-[10vw] md:text-[8vw] lg:text-[7vw] leading-none tracking-tighter text-transparent bg-clip-text bg-linear-to-b from-gray-200 to-gray-400"
             style={{
                 filter: "drop-shadow(4px 4px 6px rgba(0,0,0,0.2))"
             }}
