@@ -78,11 +78,6 @@ export default function Footer() {
               </li>
               <li>
                 <a href="#" className="hover:text-white transition-colors">
-                  {t.footer.links.careers}
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
                   {t.footer.links.contact}
                 </a>
               </li>

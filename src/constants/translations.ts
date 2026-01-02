@@ -102,6 +102,40 @@ export const TRANSLATIONS = {
         construction: "Construction Services",
       },
     },
+    consultation: {
+      title: "Consultation",
+      intro: {
+        title: "Need Help with Your Construction Project?",
+        desc: "Fill out the form below and our expert team will contact you within 24 hours.",
+      },
+      contactInfo: {
+        title: "Our Official Contact Information",
+      },
+      form: {
+        title: "Consultation Form",
+        name: "Name",
+        email: "Email",
+        whatsapp: "WhatsApp Number",
+      },
+      project: {
+        title: "Project Details",
+        type: "Project Type",
+        location: "Project Location",
+        area: "Project Area",
+        length: "Length",
+        width: "Width",
+        unit: "in m²",
+        typePlaceholder: "Example: Home Renovation",
+      },
+      preferences: {
+        title: "Preferences & Budget",
+        budget: "Budget",
+        budgetPlaceholder: "Example: 100 Million",
+        timeline: "Timeline",
+        timelinePlaceholder: "Example: Next Month",
+      },
+      submit: "Consult Now",
+    },
   },
   id: {
     nav: {
@@ -204,6 +238,40 @@ export const TRANSLATIONS = {
         construction: "Layanan Konstruksi",
       },
     },
+    consultation: {
+      title: "Konsultasi",
+      intro: {
+        title: "Butuh Bantuan untuk Proyek Konstruksi Anda?",
+        desc: "Isi form berikut dan tim ahli kami akan menghubungi Anda dalam 24 jam.",
+      },
+      contactInfo: {
+        title: "Informasi Kontak Resmi Kami",
+      },
+      form: {
+        title: "Form Konsultasi",
+        name: "Nama",
+        email: "Email",
+        whatsapp: "No WhatsApp",
+      },
+      project: {
+        title: "Detail Proyek",
+        type: "Jenis Proyek",
+        location: "Lokasi Proyek",
+        area: "Luas Proyek",
+        length: "Panjang",
+        width: "Lebar",
+        unit: "dalam satuan m²",
+        typePlaceholder: "Contoh: Renovasi Rumah",
+      },
+      preferences: {
+        title: "Preferensi & Budget",
+        budget: "Budget",
+        budgetPlaceholder: "Contoh: 100 Juta",
+        timeline: "Rencana Pengerjaan",
+        timelinePlaceholder: "Contoh: Bulan Depan",
+      },
+      submit: "Konsultasi Sekarang",
+    },
   },
   ja: {
     nav: {
@@ -305,6 +373,40 @@ export const TRANSLATIONS = {
         consultation: "相談",
         construction: "建設サービス",
       },
+    },
+    consultation: {
+      title: "相談",
+      intro: {
+        title: "建設プロジェクトでお困りですか？",
+        desc: "以下のフォームにご記入ください。専門チームが24時間以内にご連絡いたします。",
+      },
+      contactInfo: {
+        title: "公式連絡先情報",
+      },
+      form: {
+        title: "相談フォーム",
+        name: "名前",
+        email: "メールアドレス",
+        whatsapp: "WhatsApp番号",
+      },
+      project: {
+        title: "プロジェクト詳細",
+        type: "プロジェクトの種類",
+        location: "プロジェクトの場所",
+        area: "プロジェクト面積",
+        length: "長さ",
+        width: "幅",
+        unit: "単位 m²",
+        typePlaceholder: "例：家のリノベーション",
+      },
+      preferences: {
+        title: "希望と予算",
+        budget: "予算",
+        budgetPlaceholder: "例：1億ルピア",
+        timeline: "タイムライン",
+        timelinePlaceholder: "例：来月",
+      },
+      submit: "今すぐ相談する",
     },
   },
 } as const;

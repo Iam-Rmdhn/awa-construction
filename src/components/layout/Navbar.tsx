@@ -12,7 +12,10 @@ import { LiquidGlassCard } from '@/components/ui/liquid-glass-card';
 import { useLanguage } from '@/contexts/LanguageContext';
 import LanguageSwitcher from '@/components/ui/language-switcher';
 
+import { usePathname } from 'next/navigation';
+
 export function Header() {
+    const pathname = usePathname();
 	const [open, setOpen] = React.useState(false);
 	const scrolled = useScroll(10);
     const { t } = useLanguage();
@@ -31,9 +34,7 @@ export function Header() {
                 { id: 'contact', theme: 'dark' }
             ] as const;
 
-            // Default to dark (hero) if at very top
             if (currentPos < window.innerHeight / 2 && currentPos < 500) {
-                 // Safe fallback for hero
             }
 
             for (const section of sections) {
@@ -71,6 +72,8 @@ export function Header() {
 			document.body.style.overflow = '';
 		};
 	}, [open]);
+
+    if (pathname === '/consultation') return null;
 
 	return (
 		<header

@@ -58,7 +58,7 @@ export default function Contact() {
             viewport={{ once: true }}
           >
             <Link
-              href="#"
+              href="/consultation"
               className="inline-flex items-center gap-2 bg-(--color-secondary) text-white px-6 py-3 md:px-8 md:py-4 rounded-full font-bold text-sm md:text-base transition-all hover:shadow-[4px_4px_0px_0px_var(--color-tertiary)] group"
             >
               <span>{t.contact?.cta || "Konsultasi Sekarang"}</span>
