@@ -1,6 +1,6 @@
 "use client";
 
-import { IMAGES } from "@/constants/images";
+import { PROJECTS } from "@/constants/projects";
 import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 import Link from "next/link";
@@ -12,38 +12,7 @@ export default function FeaturedProjects() {
   const { t } = useLanguage();
   const [showAll, setShowAll] = useState(false);
 
-  const projects = [
-    {
-      title: "Warung Selera Nusantara",
-      description: "Renovasi ruko berlantai 2 ini mengubahnya menjadi warung makan yang nyaman dan modern. Dengan desain interior yang efisien, material ramah lingkungan, dan penataan ruang yang optimal, kedua lantai memberikan suasana yang hangat dan fungsional, menciptakan pengalaman kuliner yang menyenangkan bagi pengunjung.",
-      type: "Renovasi",
-      year: "2025",
-      location: "Mampang Prapatan, Jakarta Selatan",
-      area: "4m x 12m (dua lantai)",
-      time: "3 Minggu",
-      image: IMAGES.PROJECT_IMAGE1,
-    },
-    {
-      title: "RM Mas Gaw",
-      description: "Renovasi ruko ini mengubahnya menjadi warung makan yang nyaman dengan desain interior modern dan fungsional. Penggunaan material ramah lingkungan dan penataan ruang yang efisien menciptakan suasana yang hangat, ideal untuk pengalaman kuliner yang menyenangkan.",
-      type: "Renovasi",
-      year: "2025",
-      location: "Margonda Raya, Depok",
-      area: "6 x 25m",
-      time: "3 Minggu",
-      image: IMAGES.PROJECT_IMAGE2,
-    },
-    {
-      title: "Dapur Sagawa Group",
-      description: "Konstruksi dapur komersial yang dirancang untuk efisiensi operasional maksimal. Dilengkapi dengan sistem ventilasi modern dan tata letak yang ergonomis untuk mendukung produktivitas.",
-      type: "Konstruksi",
-      year: "2025",
-      location: "Bogor, Jawa Barat",
-      area: "4m x 7m",
-      time: "2 Minggu",
-      image: IMAGES.PROJECT_IMAGE3,
-    },
-  ];
+  const projects = PROJECTS;
 
   const ProjectCard = ({ project, index }: { project: typeof projects[number], index: number }) => (
     <motion.div
@@ -120,7 +89,7 @@ export default function FeaturedProjects() {
         </div>
         {/* Link */}
         <Link
-          href="#"
+          href={`/projects/${project.id}`}
           className="inline-flex items-center gap-2 text-(--color-secondary) font-bold text-sm hover:gap-3 transition-all group"
         >
           <span className="underline underline-offset-4">Lihat detail</span>

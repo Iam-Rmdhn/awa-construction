@@ -21,19 +21,26 @@ export const IMAGES = {
     PROJECT_IMAGE3: "/assets/img/dapursagawa.png",
 
     // Details image warnas
-    DETAILS_IMAGE1: "/assets/img/details1.png",
-    DETAILS_IMAGE2: "/assets/img/details2.png",
-    DETAILS_IMAGE3: "/assets/img/details3.png",
+    DETAILS_IMAGE1: "/assets/img/projek-detail/warnas/warnas1.png",
+    DETAILS_IMAGE2: "/assets/img/projek-detail/warnas/warnas2.png",
+    DETAILS_IMAGE3: "/assets/img/projek-detail/warnas/warnas3.png",
+    DETAILS_IMAGE4: "/assets/img/projek-detail/warnas/warnas4.png",
+    DETAILS_IMAGE5: "/assets/img/projek-detail/warnas/warnas5.png",
 
     // Details image masgaw
-    DETAILS_IMAGE4: "/assets/img/details4.png",
-    DETAILS_IMAGE5: "/assets/img/details5.png",
-    DETAILS_IMAGE6: "/assets/img/details6.png",
+    DETAILS_IMAGE6: "/assets/img/projek-detail/masgaw/masgaw1.png",
+    DETAILS_IMAGE7: "/assets/img/projek-detail/masgaw/masgaw2.png",
+    DETAILS_IMAGE8: "/assets/img/projek-detail/masgaw/masgaw3.png",
+    DETAILS_IMAGE9: "/assets/img/projek-detail/masgaw/masgaw4.png",
+    DETAILS_IMAGE10: "/assets/img/projek-detail/masgaw/masgaw5.png",
+    DETAILS_IMAGE11: "/assets/img/projek-detail/masgaw/masgaw6.png",
 
     // Details image dapursagawa
-    DETAILS_IMAGE7: "/assets/img/details7.png",
-    DETAILS_IMAGE8: "/assets/img/details8.png",
-    DETAILS_IMAGE9: "/assets/img/details9.png",
+    DETAILS_IMAGE12: "/assets/img/projek-detail/dapur/dapur1.png",
+    DETAILS_IMAGE13: "/assets/img/projek-detail/dapur/dapur2.png",
+    DETAILS_IMAGE14: "/assets/img/projek-detail/dapur/dapur3.png",
+    DETAILS_IMAGE15: "/assets/img/projek-detail/dapur/dapur4.png",
+    DETAILS_IMAGE16: "/assets/img/projek-detail/dapur/dapur5.png",
 
     // contact image
     CONTACT_IMAGE1: "/assets/img/sketc.png",
