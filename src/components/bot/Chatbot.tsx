@@ -1,34 +1,31 @@
-"use client";
+'use client';
 
-import React, { useState, useEffect, useRef, useMemo } from "react";
-import { Bot, X, Send } from "lucide-react";
-import { useRouter } from "next/navigation";
-import MobileChatbot from "./MobileChatbot";
-import { useChatHistory } from "./HistoryChatbot";
+import React, { useState, useEffect, useRef, useMemo } from 'react';
+import { Bot, X, Send } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import MobileChatbot from './MobileChatbot';
+import { useChatHistory } from './HistoryChatbot';
 import {
   detectServiceQuestion,
   getServiceOptions,
   getServiceResponse,
   getDefaultResponse,
-} from "./ServiceBot";
-import { detectGreeting, getGreetingResponse } from "./Logicbot";
-import { getTooltipGreeting } from "./TranslationBot";
-import { useLanguage } from "@/contexts/LanguageContext";
+} from './ServiceBot';
+import { detectGreeting, getGreetingResponse } from './Logicbot';
+import { getTooltipGreeting } from './TranslationBot';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function Chatbot() {
   const { language } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState('');
   const chatAreaRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
   const { messages, addMessage, initializeWithLanguage } = useChatHistory();
 
   // sapaan tooltip
-  const currentGreeting = useMemo(
-    () => getTooltipGreeting(language),
-    [language]
-  );
+  const currentGreeting = useMemo(() => getTooltipGreeting(language), [language]);
 
   // Saat ubah bahasa
   useEffect(() => {
@@ -45,9 +42,9 @@ export default function Chatbot() {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
     handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // Auto scroll to bottom when new message added
@@ -62,7 +59,7 @@ export default function Chatbot() {
 
     // Add user message
     addMessage({
-      type: "user",
+      type: 'user',
       content: inputValue,
     });
 
@@ -70,14 +67,14 @@ export default function Chatbot() {
     if (detectGreeting(inputValue)) {
       setTimeout(() => {
         addMessage({
-          type: "bot",
+          type: 'bot',
           content: getGreetingResponse(inputValue, language),
         });
       }, 500);
     } else if (detectServiceQuestion(inputValue)) {
       setTimeout(() => {
         addMessage({
-          type: "bot",
+          type: 'bot',
           content: getServiceResponse(language),
           options: getServiceOptions(language),
         });
@@ -86,23 +83,23 @@ export default function Chatbot() {
       // Default response
       setTimeout(() => {
         addMessage({
-          type: "bot",
+          type: 'bot',
           content: getDefaultResponse(language),
         });
       }, 500);
     }
 
-    setInputValue("");
+    setInputValue('');
   };
 
   const handleOptionClick = (option: { action: string; value: string }) => {
-    if (option.action === "navigate") {
+    if (option.action === 'navigate') {
       router.push(option.value);
     }
   };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       handleSendMessage();
     }
   };
@@ -112,11 +109,9 @@ export default function Chatbot() {
       {/* Floating Button */}
       <div
         className={`fixed bottom-6 right-6 z-50 flex items-center justify-end transition-all duration-500 ease-in-out ${
-          isOpen ? "hidden md:flex" : "flex"
+          isOpen ? 'hidden md:flex' : 'flex'
         } ${
-          isVisible
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 translate-y-10 pointer-events-none"
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'
         }`}
       >
         <div className="group relative flex items-center">
@@ -136,17 +131,13 @@ export default function Chatbot() {
               <Bot
                 size={32}
                 className={`absolute top-0 left-0 transition-all duration-300 transform ${
-                  isOpen
-                    ? "opacity-0 rotate-90 scale-50"
-                    : "opacity-100 rotate-0 scale-100"
+                  isOpen ? 'opacity-0 rotate-90 scale-50' : 'opacity-100 rotate-0 scale-100'
                 }`}
               />
               <X
                 size={32}
                 className={`absolute top-0 left-0 transition-all duration-300 transform ${
-                  isOpen
-                    ? "opacity-100 rotate-0 scale-100"
-                    : "opacity-0 -rotate-90 scale-50"
+                  isOpen ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-90 scale-50'
                 }`}
               />
             </div>
@@ -170,9 +161,7 @@ export default function Chatbot() {
                   <Bot size={24} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-base font-unbounded">
-                    AWA Assistant
-                  </h3>
+                  <h3 className="font-bold text-base font-unbounded">AWA Assistant</h3>
                   <p className="text-xs opacity-90 font-nunito">Online</p>
                 </div>
               </div>
@@ -196,17 +185,15 @@ export default function Chatbot() {
                 <div
                   key={message.id}
                   className={`flex flex-col ${
-                    message.type === "user"
-                      ? "items-end ml-auto"
-                      : "items-start"
-                  } max-w-[85%] ${message.type === "user" ? "ml-auto" : ""}`}
+                    message.type === 'user' ? 'items-end ml-auto' : 'items-start'
+                  } max-w-[85%] ${message.type === 'user' ? 'ml-auto' : ''}`}
                 >
                   <div
                     className={`${
-                      message.type === "user"
-                        ? "bg-[#00a0a0] text-white rounded-2xl rounded-tr-none"
-                        : "bg-white border border-gray-200 rounded-2xl rounded-tl-none text-gray-800"
-                    } p-3 shadow-sm ${message.options ? "w-full" : ""}`}
+                      message.type === 'user'
+                        ? 'bg-[#00a0a0] text-white rounded-2xl rounded-tr-none'
+                        : 'bg-white border border-gray-200 rounded-2xl rounded-tl-none text-gray-800'
+                    } p-3 shadow-sm ${message.options ? 'w-full' : ''}`}
                   >
                     <p className="text-sm font-nunito">{message.content}</p>
                     {message.options && (
@@ -225,7 +212,7 @@ export default function Chatbot() {
                   </div>
                   <span
                     className={`text-[10px] text-gray-500 mt-1 ${
-                      message.type === "user" ? "mr-1" : "ml-1"
+                      message.type === 'user' ? 'mr-1' : 'ml-1'
                     } font-nunito`}
                   >
                     {message.timestamp}

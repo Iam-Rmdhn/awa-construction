@@ -8,9 +8,9 @@ import {
   indonesianGreetingResponses,
   japaneseGreetingResponses,
   specialGreetingResponses,
-} from "./Greetings";
-import { TRANSLATIONS, Language } from "@/constants/translations";
-import { getGreetingResponseByTime } from "./TranslationBot";
+} from './Greetings';
+import { TRANSLATIONS, Language } from '@/constants/translations';
+import { getGreetingResponseByTime } from './TranslationBot';
 
 /**
  * Detects if a message is a greeting
@@ -32,9 +32,7 @@ export function detectLanguage(message: string): Language {
   const lowerMessage = message.toLowerCase().trim();
 
   // Check for Japanese keywords first (karena karakternya unique)
-  const hasJapanese = japaneseGreetingKeywords.some((keyword) =>
-    lowerMessage.includes(keyword)
-  );
+  const hasJapanese = japaneseGreetingKeywords.some((keyword) => lowerMessage.includes(keyword));
 
   // Check for Indonesian keywords
   const hasIndonesian = indonesianGreetingKeywords.some((keyword) =>
@@ -42,13 +40,11 @@ export function detectLanguage(message: string): Language {
   );
 
   // Check for English keywords
-  const hasEnglish = englishGreetingKeywords.some((keyword) =>
-    lowerMessage.includes(keyword)
-  );
+  const hasEnglish = englishGreetingKeywords.some((keyword) => lowerMessage.includes(keyword));
 
   // Return Japanese if detected
   if (hasJapanese) {
-    return "ja";
+    return 'ja';
   }
 
   // If both Indonesian and English are detected, prioritize based on the dominant language in the message
@@ -63,21 +59,21 @@ export function detectLanguage(message: string): Language {
     ).length;
 
     // Return the language with more matches, default to Indonesian if equal
-    return englishMatches > indonesianMatches ? "en" : "id";
+    return englishMatches > indonesianMatches ? 'en' : 'id';
   }
 
   // Bahasa Indo
   if (hasIndonesian) {
-    return "id";
+    return 'id';
   }
 
   // Bahasa Inggris
   if (hasEnglish) {
-    return "en";
+    return 'en';
   }
 
   // Default to Indonesian
-  return "id";
+  return 'id';
 }
 
 /**
@@ -87,10 +83,7 @@ export function detectLanguage(message: string): Language {
   @returns
  */
 
-export function getGreetingResponse(
-  message: string = "",
-  currentLanguage: Language
-): string {
+export function getGreetingResponse(message: string = '', currentLanguage: Language): string {
   const lowerMessage = message.toLowerCase().trim();
   const detectedLanguage = detectLanguage(message);
 
@@ -98,20 +91,16 @@ export function getGreetingResponse(
   const language = detectedLanguage || currentLanguage;
 
   // Cek sapaan khusus yang memerlukan respons spesifik
-  for (const [greeting, responses] of Object.entries(
-    specialGreetingResponses
-  )) {
+  for (const [greeting, responses] of Object.entries(specialGreetingResponses)) {
     if (lowerMessage.includes(greeting)) {
-      return responses[language] || responses["id"];
+      return responses[language] || responses['id'];
     }
   }
 
   // Cek apakah pesan adalah sapaan untuk memberikan sapaan berdasarkan waktu
   const isGreetingMessage =
     englishGreetingKeywords.some((keyword) => lowerMessage.includes(keyword)) ||
-    indonesianGreetingKeywords.some((keyword) =>
-      lowerMessage.includes(keyword)
-    ) ||
+    indonesianGreetingKeywords.some((keyword) => lowerMessage.includes(keyword)) ||
     japaneseGreetingKeywords.some((keyword) => lowerMessage.includes(keyword));
 
   if (isGreetingMessage) {
@@ -121,11 +110,11 @@ export function getGreetingResponse(
 
   // Untuk pesan non-sapaan, kembalikan respons sapaan acak
   const greetingResponses =
-    language === "ja"
+    language === 'ja'
       ? japaneseGreetingResponses
-      : language === "en"
-      ? englishGreetingResponses
-      : indonesianGreetingResponses;
+      : language === 'en'
+        ? englishGreetingResponses
+        : indonesianGreetingResponses;
 
   // Kembalikan respons sapaan acak dalam bahasa yang terdeteksi
   const randomIndex = Math.floor(Math.random() * greetingResponses.length);
@@ -137,7 +126,7 @@ export function getGreetingResponse(
   @param language
   @returns
  */
-export function getTimedGreetingResponse(language: Language = "id"): string {
+export function getTimedGreetingResponse(language: Language = 'id'): string {
   const hour = new Date().getHours();
   const translations = TRANSLATIONS[language].chatbot.greeting;
 
@@ -160,11 +149,11 @@ export function getTimedGreetingResponse(language: Language = "id"): string {
  */
 export function getGreetingResponseByLanguage(language: Language): string {
   const greetingResponses =
-    language === "ja"
+    language === 'ja'
       ? japaneseGreetingResponses
-      : language === "en"
-      ? englishGreetingResponses
-      : indonesianGreetingResponses;
+      : language === 'en'
+        ? englishGreetingResponses
+        : indonesianGreetingResponses;
 
   // Return a random greeting response in the specified language
   const randomIndex = Math.floor(Math.random() * greetingResponses.length);

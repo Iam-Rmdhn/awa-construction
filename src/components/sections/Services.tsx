@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { ICONS } from "@/constants/icons";
-import { IMAGES } from "@/constants/images";
-import Image from "next/image";
-import { motion } from "motion/react";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { ICONS } from '@/constants/icons';
+import { IMAGES } from '@/constants/images';
+import Image from 'next/image';
+import { motion } from 'motion/react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function Services() {
   const { t } = useLanguage();
@@ -37,7 +37,7 @@ export default function Services() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
           viewport={{ once: true }}
           className="mb-12 md:mb-20 w-full"
         >
@@ -61,7 +61,7 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{
                 duration: 0.5,
-                ease: "easeOut",
+                ease: 'easeOut',
                 delay: index * 0.2,
               }}
               viewport={{ once: true }}
@@ -92,15 +92,15 @@ export default function Services() {
 
                 {/* Title Tab */}
                 <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[85%] bg-white rounded-b-2xl py-4 flex items-center justify-center shadow-none z-20">
-                    <h3 className="font-unbounded font-bold text-(--color-foreground) text-center text-lg leading-tight">
+                  <h3 className="font-unbounded font-bold text-(--color-foreground) text-center text-lg leading-tight">
                     {service.title.split('&').map((part, i, arr) => (
-                        <span key={i}>
-                            {part}
-                            {i < arr.length - 1 && <span> & </span>}
-                            {i < arr.length - 1 && <br className="hidden" />}
-                        </span>
-                        ))}
-                    </h3>
+                      <span key={i}>
+                        {part}
+                        {i < arr.length - 1 && <span> & </span>}
+                        {i < arr.length - 1 && <br className="hidden" />}
+                      </span>
+                    ))}
+                  </h3>
                 </div>
               </div>
 

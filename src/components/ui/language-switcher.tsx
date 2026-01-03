@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { useLanguage } from "@/contexts/LanguageContext";
-import { Language } from "@/constants/translations";
-import { Globe } from "lucide-react";
-import { useState, useRef, useEffect } from "react";
+import { useLanguage } from '@/contexts/LanguageContext';
+import { Language } from '@/constants/translations';
+import { Globe } from 'lucide-react';
+import { useState, useRef, useEffect } from 'react';
 
 interface LanguageOption {
   code: Language;
@@ -12,17 +12,20 @@ interface LanguageOption {
 }
 
 const languages: LanguageOption[] = [
-  { code: "id", label: "Indonesia", shortLabel: "ID" },
-  { code: "en", label: "English", shortLabel: "EN" },
-  { code: "ja", label: "日本語", shortLabel: "JP" },
+  { code: 'id', label: 'Indonesia', shortLabel: 'ID' },
+  { code: 'en', label: 'English', shortLabel: 'EN' },
+  { code: 'ja', label: '日本語', shortLabel: 'JP' },
 ];
 
 interface LanguageSwitcherProps {
-  variant?: "light" | "dark";
-  displayMode?: "buttons" | "icon";
+  variant?: 'light' | 'dark';
+  displayMode?: 'buttons' | 'icon';
 }
 
-export default function LanguageSwitcher({ variant = "light", displayMode = "buttons" }: LanguageSwitcherProps) {
+export default function LanguageSwitcher({
+  variant = 'light',
+  displayMode = 'buttons',
+}: LanguageSwitcherProps) {
   const { language, setLanguage } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -35,8 +38,8 @@ export default function LanguageSwitcher({ variant = "light", displayMode = "but
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
   const handleSelect = (code: Language) => {
@@ -45,7 +48,7 @@ export default function LanguageSwitcher({ variant = "light", displayMode = "but
   };
 
   // Icon mode with dropdown (for desktop)
-  if (displayMode === "icon") {
+  if (displayMode === 'icon') {
     return (
       <div className="relative" ref={dropdownRef}>
         {/* Globe Button */}
@@ -56,9 +59,10 @@ export default function LanguageSwitcher({ variant = "light", displayMode = "but
             w-10 h-10 rounded-full
             transition-all duration-300
             hover:scale-105 active:scale-95
-            ${variant === "light" 
-              ? "bg-white/10 hover:bg-white/20 text-white border border-white/20" 
-              : "bg-black/10 hover:bg-black/20 text-black border border-black/20"
+            ${
+              variant === 'light'
+                ? 'bg-white/10 hover:bg-white/20 text-white border border-white/20'
+                : 'bg-black/10 hover:bg-black/20 text-black border border-black/20'
             }
           `}
           aria-label="Select language"
@@ -77,9 +81,10 @@ export default function LanguageSwitcher({ variant = "light", displayMode = "but
             rounded-xl shadow-xl
             overflow-hidden
             transition-all duration-200 origin-top-right
-            ${isOpen 
-              ? "opacity-100 scale-100 translate-y-0" 
-              : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
+            ${
+              isOpen
+                ? 'opacity-100 scale-100 translate-y-0'
+                : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
             }
           `}
         >
@@ -91,9 +96,10 @@ export default function LanguageSwitcher({ variant = "light", displayMode = "but
                 className={`
                   w-full flex items-center gap-3 px-4 py-2.5
                   transition-all duration-200 text-left
-                  ${language === lang.code 
-                    ? "bg-(--color-secondary)/20 text-(--color-secondary) font-bold" 
-                    : "hover:bg-gray-100 text-gray-700"
+                  ${
+                    language === lang.code
+                      ? 'bg-(--color-secondary)/20 text-(--color-secondary) font-bold'
+                      : 'hover:bg-gray-100 text-gray-700'
                   }
                 `}
               >
@@ -117,11 +123,12 @@ export default function LanguageSwitcher({ variant = "light", displayMode = "but
           className={`
             px-3 py-1.5 rounded-full text-sm font-bold
             transition-all duration-300
-            ${language === lang.code 
-              ? "bg-(--color-secondary) text-white" 
-              : variant === "light"
-                ? "bg-white/10 text-white hover:bg-white/20 border border-white/20"
-                : "bg-black/10 text-black hover:bg-black/20 border border-black/20"
+            ${
+              language === lang.code
+                ? 'bg-(--color-secondary) text-white'
+                : variant === 'light'
+                  ? 'bg-white/10 text-white hover:bg-white/20 border border-white/20'
+                  : 'bg-black/10 text-black hover:bg-black/20 border border-black/20'
             }
           `}
           aria-label={`Switch to ${lang.shortLabel}`}

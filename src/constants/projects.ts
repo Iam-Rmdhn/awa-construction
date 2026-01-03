@@ -1,4 +1,4 @@
-import { IMAGES } from "./images";
+import { IMAGES } from './images';
 
 export type Project = {
   id: string;
@@ -16,14 +16,15 @@ export type Project = {
 
 export const PROJECTS: Project[] = [
   {
-    id: "warung-selera-nusantara",
-    title: "Warung Selera Nusantara",
-    description: "Renovasi ruko berlantai 2 ini mengubahnya menjadi warung makan yang nyaman dan modern. Dengan desain interior yang efisien, material ramah lingkungan, dan penataan ruang yang optimal, kedua lantai memberikan suasana yang hangat dan fungsional, menciptakan pengalaman kuliner yang menyenangkan bagi pengunjung.",
-    type: "Renovasi",
-    year: "2025",
-    location: "Mampang Prapatan, Jakarta Selatan",
-    area: "4m x 12m (dua lantai)",
-    time: "3 Minggu",
+    id: 'warung-selera-nusantara',
+    title: 'Warung Selera Nusantara',
+    description:
+      'Renovasi ruko berlantai 2 ini mengubahnya menjadi warung makan yang nyaman dan modern. Dengan desain interior yang efisien, material ramah lingkungan, dan penataan ruang yang optimal, kedua lantai memberikan suasana yang hangat dan fungsional, menciptakan pengalaman kuliner yang menyenangkan bagi pengunjung.',
+    type: 'Renovasi',
+    year: '2025',
+    location: 'Mampang Prapatan, Jakarta Selatan',
+    area: '4m x 12m (dua lantai)',
+    time: '3 Minggu',
     image: IMAGES.PROJECT_IMAGE1,
     gallery: [
       IMAGES.DETAILS_IMAGE1,
@@ -34,14 +35,15 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: "rm-mas-gaw",
-    title: "RM Mas Gaw",
-    description: "Renovasi ruko ini mengubahnya menjadi warung makan yang nyaman dengan desain interior modern dan fungsional. Penggunaan material ramah lingkungan dan penataan ruang yang efisien menciptakan suasana yang hangat, ideal untuk pengalaman kuliner yang menyenangkan.",
-    type: "Renovasi",
-    year: "2025",
-    location: "Margonda Raya, Depok",
-    area: "6 x 25m",
-    time: "3 Minggu",
+    id: 'rm-mas-gaw',
+    title: 'RM Mas Gaw',
+    description:
+      'Renovasi ruko ini mengubahnya menjadi warung makan yang nyaman dengan desain interior modern dan fungsional. Penggunaan material ramah lingkungan dan penataan ruang yang efisien menciptakan suasana yang hangat, ideal untuk pengalaman kuliner yang menyenangkan.',
+    type: 'Renovasi',
+    year: '2025',
+    location: 'Margonda Raya, Depok',
+    area: '6 x 25m',
+    time: '3 Minggu',
     image: IMAGES.PROJECT_IMAGE2,
     gallery: [
       IMAGES.DETAILS_IMAGE6,
@@ -53,14 +55,15 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: "dapur-sagawa-group",
-    title: "Dapur Sagawa Group",
-    description: "Konstruksi dapur komersial yang dirancang untuk efisiensi operasional maksimal. Dilengkapi dengan sistem ventilasi modern dan tata letak yang ergonomis untuk mendukung produktivitas.",
-    type: "Konstruksi",
-    year: "2025",
-    location: "Bogor, Jawa Barat",
-    area: "4m x 7m",
-    time: "2 Minggu",
+    id: 'dapur-sagawa-group',
+    title: 'Dapur Sagawa Group',
+    description:
+      'Konstruksi dapur komersial yang dirancang untuk efisiensi operasional maksimal. Dilengkapi dengan sistem ventilasi modern dan tata letak yang ergonomis untuk mendukung produktivitas.',
+    type: 'Konstruksi',
+    year: '2025',
+    location: 'Bogor, Jawa Barat',
+    area: '4m x 7m',
+    time: '2 Minggu',
     image: IMAGES.PROJECT_IMAGE3,
     gallery: [
       IMAGES.DETAILS_IMAGE12,

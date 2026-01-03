@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import React, { useState, useRef, useEffect } from "react";
-import { X, Send, Bot } from "lucide-react";
-import { useRouter } from "next/navigation";
-import { useChatHistory } from "./HistoryChatbot";
+import React, { useState, useRef, useEffect } from 'react';
+import { X, Send, Bot } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { useChatHistory } from './HistoryChatbot';
 import {
   detectServiceQuestion,
   getServiceOptions,
   getServiceResponse,
   getDefaultResponse,
-} from "./ServiceBot";
-import { detectGreeting, getGreetingResponse } from "./Logicbot";
-import { useLanguage } from "@/contexts/LanguageContext";
+} from './ServiceBot';
+import { detectGreeting, getGreetingResponse } from './Logicbot';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface MobileChatbotProps {
   onClose: () => void;
@@ -19,7 +19,7 @@ interface MobileChatbotProps {
 
 export default function MobileChatbot({ onClose }: MobileChatbotProps) {
   const { language } = useLanguage();
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState('');
   const chatAreaRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
   const { messages, addMessage } = useChatHistory();
@@ -36,7 +36,7 @@ export default function MobileChatbot({ onClose }: MobileChatbotProps) {
 
     // Add user message
     addMessage({
-      type: "user",
+      type: 'user',
       content: inputValue,
     });
 
@@ -45,7 +45,7 @@ export default function MobileChatbot({ onClose }: MobileChatbotProps) {
       // Add greeting response
       setTimeout(() => {
         addMessage({
-          type: "bot",
+          type: 'bot',
           content: getGreetingResponse(inputValue, language),
         });
       }, 500);
@@ -53,7 +53,7 @@ export default function MobileChatbot({ onClose }: MobileChatbotProps) {
       // Add bot response with options
       setTimeout(() => {
         addMessage({
-          type: "bot",
+          type: 'bot',
           content: getServiceResponse(language),
           options: getServiceOptions(language),
         });
@@ -62,23 +62,23 @@ export default function MobileChatbot({ onClose }: MobileChatbotProps) {
       // Default response
       setTimeout(() => {
         addMessage({
-          type: "bot",
+          type: 'bot',
           content: getDefaultResponse(language),
         });
       }, 500);
     }
 
-    setInputValue("");
+    setInputValue('');
   };
 
   const handleOptionClick = (option: { action: string; value: string }) => {
-    if (option.action === "navigate") {
+    if (option.action === 'navigate') {
       router.push(option.value);
     }
   };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       handleSendMessage();
     }
   };
@@ -96,10 +96,7 @@ export default function MobileChatbot({ onClose }: MobileChatbotProps) {
             <p className="text-xs opacity-90 font-nunito">Online</p>
           </div>
         </div>
-        <button
-          onClick={onClose}
-          className="p-1 hover:bg-white/20 rounded-full transition-colors"
-        >
+        <button onClick={onClose} className="p-1 hover:bg-white/20 rounded-full transition-colors">
           <X size={24} />
         </button>
       </div>
@@ -116,15 +113,15 @@ export default function MobileChatbot({ onClose }: MobileChatbotProps) {
           <div
             key={message.id}
             className={`flex flex-col ${
-              message.type === "user" ? "items-end ml-auto" : "items-start"
-            } max-w-[80%] ${message.type === "user" ? "ml-auto" : ""}`}
+              message.type === 'user' ? 'items-end ml-auto' : 'items-start'
+            } max-w-[80%] ${message.type === 'user' ? 'ml-auto' : ''}`}
           >
             <div
               className={`${
-                message.type === "user"
-                  ? "bg-[#00a0a0] text-white rounded-2xl rounded-tr-none"
-                  : "bg-white border border-gray-300 rounded-2xl rounded-tl-none text-gray-800"
-              } p-3 shadow-sm ${message.options ? "w-full" : ""}`}
+                message.type === 'user'
+                  ? 'bg-[#00a0a0] text-white rounded-2xl rounded-tr-none'
+                  : 'bg-white border border-gray-300 rounded-2xl rounded-tl-none text-gray-800'
+              } p-3 shadow-sm ${message.options ? 'w-full' : ''}`}
             >
               <p className="text-sm font-nunito">{message.content}</p>
               {message.options && (
@@ -143,7 +140,7 @@ export default function MobileChatbot({ onClose }: MobileChatbotProps) {
             </div>
             <span
               className={`text-[10px] text-gray-500 mt-1 ${
-                message.type === "user" ? "mr-1" : "ml-1"
+                message.type === 'user' ? 'mr-1' : 'ml-1'
               } font-nunito`}
             >
               {message.timestamp}

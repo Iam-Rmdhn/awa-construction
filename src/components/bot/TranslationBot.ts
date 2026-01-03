@@ -1,4 +1,4 @@
-import { TRANSLATIONS, Language } from "@/constants/translations";
+import { TRANSLATIONS, Language } from '@/constants/translations';
 
 /**
  * @param language
@@ -47,13 +47,13 @@ export function getServiceOptions(language: Language) {
   return [
     {
       label: options.consultation,
-      action: "navigate" as const,
-      value: "/consultation",
+      action: 'navigate' as const,
+      value: '/consultation',
     },
     {
       label: options.construction,
-      action: "navigate" as const,
-      value: "/construction",
+      action: 'navigate' as const,
+      value: '/construction',
     },
   ];
 }
@@ -95,64 +95,53 @@ export function detectMessageLanguage(message: string): Language {
 
   // Keywords untuk bahasa Indonesia
   const indonesianKeywords = [
-    "halo",
-    "hai",
-    "selamat",
-    "pagi",
-    "siang",
-    "sore",
-    "malam",
-    "apa",
-    "layanan",
-    "jasa",
-    "bantu",
-    "tolong",
+    'halo',
+    'hai',
+    'selamat',
+    'pagi',
+    'siang',
+    'sore',
+    'malam',
+    'apa',
+    'layanan',
+    'jasa',
+    'bantu',
+    'tolong',
   ];
 
   // Keywords untuk bahasa Inggris
   const englishKeywords = [
-    "hello",
-    "hi",
-    "hey",
-    "good",
-    "morning",
-    "afternoon",
-    "evening",
-    "night",
-    "what",
-    "service",
-    "help",
-    "please",
+    'hello',
+    'hi',
+    'hey',
+    'good',
+    'morning',
+    'afternoon',
+    'evening',
+    'night',
+    'what',
+    'service',
+    'help',
+    'please',
   ];
 
   // Keywords untuk bahasa Jepang
-  const japaneseKeywords = [
-    "こんにちは",
-    "おはよう",
-    "こんばんは",
-    "サービス",
-    "助け",
-    "お願い",
-  ];
+  const japaneseKeywords = ['こんにちは', 'おはよう', 'こんばんは', 'サービス', '助け', 'お願い'];
 
   // Check Japanese first (karena karakternya unique)
-  const hasJapanese = japaneseKeywords.some((keyword) =>
-    lowerMessage.includes(keyword)
-  );
-  if (hasJapanese) return "ja";
+  const hasJapanese = japaneseKeywords.some((keyword) => lowerMessage.includes(keyword));
+  if (hasJapanese) return 'ja';
 
   // Count matches untuk Indonesian dan English
   const indonesianMatches = indonesianKeywords.filter((keyword) =>
     lowerMessage.includes(keyword)
   ).length;
 
-  const englishMatches = englishKeywords.filter((keyword) =>
-    lowerMessage.includes(keyword)
-  ).length;
+  const englishMatches = englishKeywords.filter((keyword) => lowerMessage.includes(keyword)).length;
 
   // Return bahasa dengan matches terbanyak
-  if (indonesianMatches > englishMatches) return "id";
-  if (englishMatches > indonesianMatches) return "en";
+  if (indonesianMatches > englishMatches) return 'id';
+  if (englishMatches > indonesianMatches) return 'en';
 
-  return "id";
+  return 'id';
 }

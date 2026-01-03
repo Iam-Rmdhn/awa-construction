@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { PROJECTS } from "@/constants/projects";
-import Image from "next/image";
-import { motion, AnimatePresence } from "motion/react";
-import Link from "next/link";
-import { useLanguage } from "@/contexts/LanguageContext";
-import { MapPinned, LandPlot, AlarmClock, ArrowRight, ChevronDown } from "lucide-react";
-import { useState } from "react";
+import { PROJECTS } from '@/constants/projects';
+import Image from 'next/image';
+import { motion, AnimatePresence } from 'motion/react';
+import Link from 'next/link';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { MapPinned, LandPlot, AlarmClock, ArrowRight, ChevronDown } from 'lucide-react';
+import { useState } from 'react';
 
 export default function FeaturedProjects() {
   const { t } = useLanguage();
@@ -14,30 +14,38 @@ export default function FeaturedProjects() {
 
   const projects = PROJECTS;
 
-  const ProjectCard = ({ project, index }: { project: typeof projects[number], index: number }) => (
+  const ProjectCard = ({
+    project,
+    index,
+  }: {
+    project: (typeof projects)[number];
+    index: number;
+  }) => (
     <motion.div
       initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
       whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: true, margin: '-50px' }}
       transition={{
-        type: "spring",
+        type: 'spring',
         stiffness: 100,
         damping: 20,
         duration: 0.6,
       }}
       className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-4 md:gap-8 bg-[#2E5F9E] p-4 md:p-6 overflow-hidden rounded-2xl md:rounded-[24px]`}
       style={{
-        clipPath: index % 2 === 0
-          ? 'polygon(60px 0, 100% 0, 100% 100%, 0 100%, 0 60px)'
-          : 'polygon(0 0, calc(100% - 60px) 0, 100% 60px, 100% 100%, 0 100%)'
+        clipPath:
+          index % 2 === 0
+            ? 'polygon(60px 0, 100% 0, 100% 100%, 0 100%, 0 60px)'
+            : 'polygon(0 0, calc(100% - 60px) 0, 100% 60px, 100% 100%, 0 100%)',
       }}
     >
-      <div 
+      <div
         className="relative w-full md:w-1/2 h-48 sm:h-56 md:h-80 rounded-xl md:rounded-[22px] overflow-hidden shrink-0"
         style={{
-          clipPath: index % 2 === 0
-            ? 'polygon(50px 0, 100% 0, 100% 100%, 0 100%, 0 50px)'
-            : 'polygon(0 0, calc(100% - 50px) 0, 100% 50px, 100% 100%, 0 100%)'
+          clipPath:
+            index % 2 === 0
+              ? 'polygon(50px 0, 100% 0, 100% 100%, 0 100%, 0 50px)'
+              : 'polygon(0 0, calc(100% - 50px) 0, 100% 50px, 100% 100%, 0 100%)',
         }}
       >
         <Image
@@ -105,10 +113,7 @@ export default function FeaturedProjects() {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-screen h-16 overflow-hidden">
         <div className="absolute inset-0 flex justify-center">
           {[...Array(60)].map((_, i) => (
-            <div
-              key={i}
-              className="w-8 h-full bg-white/10 -skew-x-12 mx-2 shrink-0"
-            />
+            <div key={i} className="w-8 h-full bg-white/10 -skew-x-12 mx-2 shrink-0" />
           ))}
         </div>
       </div>
@@ -118,7 +123,7 @@ export default function FeaturedProjects() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
           viewport={{ once: true }}
           className="mb-8 md:mb-16"
         >
@@ -138,7 +143,7 @@ export default function FeaturedProjects() {
           {/* Always visible projects - First 2 */}
           <div className="flex flex-col gap-8 md:gap-12">
             {projects.slice(0, 2).map((project, index) => (
-               <ProjectCard key={project.title} project={project} index={index} />
+              <ProjectCard key={project.title} project={project} index={index} />
             ))}
           </div>
 
@@ -147,9 +152,9 @@ export default function FeaturedProjects() {
             {showAll && (
               <motion.div
                 initial={{ height: 0, opacity: 0 }}
-                animate={{ height: "auto", opacity: 1 }}
+                animate={{ height: 'auto', opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.5, ease: "easeInOut" }}
+                transition={{ duration: 0.5, ease: 'easeInOut' }}
                 className="overflow-hidden"
               >
                 <div className="flex flex-col gap-8 md:gap-12 pt-8 md:pt-12">
@@ -166,7 +171,7 @@ export default function FeaturedProjects() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
+            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.4 }}
             viewport={{ once: true }}
             className="text-center relative z-10"
           >
@@ -175,9 +180,9 @@ export default function FeaturedProjects() {
               className="inline-flex items-center gap-2 bg-(--color-secondary) text-white px-6 py-3 md:px-10 md:py-4 rounded-full font-bold text-sm md:text-lg transition-all cursor-pointer hover:shadow-[4px_4px_0px_0px_var(--color-tertiary)]"
             >
               <span>{showAll ? 'Tampilkan Lebih Sedikit' : 'Lihat Semua'}</span>
-              <ChevronDown 
-                size={22} 
-                className={`transition-transform duration-300 ${showAll ? 'rotate-180' : ''}`} 
+              <ChevronDown
+                size={22}
+                className={`transition-transform duration-300 ${showAll ? 'rotate-180' : ''}`}
               />
             </button>
           </motion.div>
@@ -187,10 +192,7 @@ export default function FeaturedProjects() {
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-screen h-16 overflow-hidden">
         <div className="absolute inset-0 flex justify-center">
           {[...Array(60)].map((_, i) => (
-            <div
-              key={i}
-              className="w-8 h-full bg-white/10 -skew-x-12 mx-2 shrink-0"
-            />
+            <div key={i} className="w-8 h-full bg-white/10 -skew-x-12 mx-2 shrink-0" />
           ))}
         </div>
       </div>

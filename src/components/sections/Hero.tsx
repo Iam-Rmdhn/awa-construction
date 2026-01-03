@@ -2,7 +2,10 @@ import { IMAGES } from '@/constants/images';
 
 export default function Hero() {
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden" id="hero">
+    <section
+      className="relative h-screen flex items-center justify-center overflow-hidden"
+      id="hero"
+    >
       <div className="absolute inset-0">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -11,7 +14,7 @@ export default function Hero() {
           }}
         ></div>
       </div>
-      
+
       {/* <div className="absolute inset-0 bg-black bg-opacity-40"></div> */}
 
       {/* Content temporarily removed

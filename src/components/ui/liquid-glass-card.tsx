@@ -12,89 +12,87 @@ function cn(...inputs: ClassValue[]) {
 }
 
 interface LiquidGlassCardProps {
-    children: React.ReactNode;
-    className?: string;
-    draggable?: boolean;
-    expandable?: boolean;
-    width?: string;
-    height?: string;
-    expandedWidth?: string;
-    expandedHeight?: string;
-    blurIntensity?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
-    shadowIntensity?: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-    borderRadius?: string;
-    glowIntensity?: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  children: React.ReactNode;
+  className?: string;
+  draggable?: boolean;
+  expandable?: boolean;
+  width?: string;
+  height?: string;
+  expandedWidth?: string;
+  expandedHeight?: string;
+  blurIntensity?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
+  shadowIntensity?: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  borderRadius?: string;
+  glowIntensity?: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 }
 
 export const LiquidGlassCard = ({
-    children,
-    className = '',
-    draggable = true,
-    expandable = false,
-    width,
-    height,
-    expandedWidth,
-    expandedHeight,
-    blurIntensity = 'xl',
-    borderRadius = '32px',
-    glowIntensity = 'sm',
-    shadowIntensity = 'md',
-    ...props
+  children,
+  className = '',
+  draggable = true,
+  expandable = false,
+  width,
+  height,
+  expandedWidth,
+  expandedHeight,
+  blurIntensity = 'xl',
+  borderRadius = '32px',
+  glowIntensity = 'sm',
+  shadowIntensity = 'md',
+  ...props
 }: LiquidGlassCardProps) => {
-    const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
 
-    const handleToggleExpansion = (e: {
-        target: { closest: (arg0: string) => unknown };
-    }) => {
-        if (!expandable) return;
-        if (e.target.closest('a, button, input, select, textarea')) return;
-        setIsExpanded(!isExpanded);
-    };
+  const handleToggleExpansion = (e: { target: { closest: (arg0: string) => unknown } }) => {
+    if (!expandable) return;
+    if (e.target.closest('a, button, input, select, textarea')) return;
+    setIsExpanded(!isExpanded);
+  };
 
-    const blurClasses = {
-        none: '',
-        sm: 'backdrop-blur-[2px]',
-        md: 'backdrop-blur-[4px]',
-        lg: 'backdrop-blur-[8px]',
-        xl: 'backdrop-blur-[16px]',
-    };
+  const blurClasses = {
+    none: '',
+    sm: 'backdrop-blur-[2px]',
+    md: 'backdrop-blur-[4px]',
+    lg: 'backdrop-blur-[8px]',
+    xl: 'backdrop-blur-[16px]',
+  };
 
-    const shadowStyles = {
-        none: 'inset 0 0 0 0 rgba(255, 255, 255, 0)',
-        xs: 'inset 1px 1px 1px 0 rgba(255, 255, 255, 0.3), inset -1px -1px 1px 0 rgba(255, 255, 255, 0.3)',
-        sm: 'inset 2px 2px 2px 0 rgba(255, 255, 255, 0.35), inset -2px -2px 2px 0 rgba(255, 255, 255, 0.35)',
-        md: 'inset 3px 3px 3px 0 rgba(255, 255, 255, 0.45), inset -3px -3px 3px 0 rgba(255, 255, 255, 0.45)',
-        lg: 'inset 4px 4px 4px 0 rgba(255, 255, 255, 0.5), inset -4px -4px 4px 0 rgba(255, 255, 255, 0.5)',
-        xl: 'inset 6px 6px 6px 0 rgba(255, 255, 255, 0.55), inset -6px -6px 6px 0 rgba(255, 255, 255, 0.55)',
-        '2xl':
-            'inset 8px 8px 8px 0 rgba(255, 255, 255, 0.6), inset -8px -8px 8px 0 rgba(255, 255, 255, 0.6)',
-    };
+  const shadowStyles = {
+    none: 'inset 0 0 0 0 rgba(255, 255, 255, 0)',
+    xs: 'inset 1px 1px 1px 0 rgba(255, 255, 255, 0.3), inset -1px -1px 1px 0 rgba(255, 255, 255, 0.3)',
+    sm: 'inset 2px 2px 2px 0 rgba(255, 255, 255, 0.35), inset -2px -2px 2px 0 rgba(255, 255, 255, 0.35)',
+    md: 'inset 3px 3px 3px 0 rgba(255, 255, 255, 0.45), inset -3px -3px 3px 0 rgba(255, 255, 255, 0.45)',
+    lg: 'inset 4px 4px 4px 0 rgba(255, 255, 255, 0.5), inset -4px -4px 4px 0 rgba(255, 255, 255, 0.5)',
+    xl: 'inset 6px 6px 6px 0 rgba(255, 255, 255, 0.55), inset -6px -6px 6px 0 rgba(255, 255, 255, 0.55)',
+    '2xl':
+      'inset 8px 8px 8px 0 rgba(255, 255, 255, 0.6), inset -8px -8px 8px 0 rgba(255, 255, 255, 0.6)',
+  };
 
-    const glowStyles = {
-        none: '0 4px 4px rgba(0, 0, 0, 0.05), 0 0 12px rgba(0, 0, 0, 0.05)',
+  const glowStyles = {
+    none: '0 4px 4px rgba(0, 0, 0, 0.05), 0 0 12px rgba(0, 0, 0, 0.05)',
     xs: '0 4px 4px rgba(0, 0, 0, 0.15), 0 0 12px rgba(0, 0, 0, 0.08), 0 0 16px rgba(255, 255, 255, 0.05)',
     sm: '0 4px 4px rgba(0, 0, 0, 0.15), 0 0 12px rgba(0, 0, 0, 0.08), 0 0 24px rgba(255, 255, 255, 0.1)',
     md: '0 4px 4px rgba(0, 0, 0, 0.15), 0 0 12px rgba(0, 0, 0, 0.08), 0 0 32px rgba(255, 255, 255, 0.15)',
     lg: '0 4px 4px rgba(0, 0, 0, 0.15), 0 0 12px rgba(0, 0, 0, 0.08), 0 0 40px rgba(255, 255, 255, 0.2)',
     xl: '0 4px 4px rgba(0, 0, 0, 0.15), 0 0 12px rgba(0, 0, 0, 0.08), 0 0 48px rgba(255, 255, 255, 0.25)',
     '2xl':
-        '0 4px 4px rgba(0, 0, 0, 0.15), 0 0 12px rgba(0, 0, 0, 0.08), 0 0 60px rgba(255, 255, 255, 0.3)',
-    };
+      '0 4px 4px rgba(0, 0, 0, 0.15), 0 0 12px rgba(0, 0, 0, 0.08), 0 0 60px rgba(255, 255, 255, 0.3)',
+  };
 
-const containerVariants = expandable
+  const containerVariants = expandable
     ? {
         collapsed: {
-            width: width || 'auto',
-            height: height || 'auto',
-            transition: {
+          width: width || 'auto',
+          height: height || 'auto',
+          transition: {
             duration: 0.4,
             ease: [0.5, 1.5, 0.5, 1],
-            },
+          },
         },
         expanded: {
-            width: expandedWidth || 'auto',
-            height: expandedHeight || 'auto',
-            transition: {
+          width: expandedWidth || 'auto',
+          height: expandedHeight || 'auto',
+          transition: {
             duration: 0.4,
             ease: [0.5, 1.5, 0.5, 1],
           },
@@ -102,22 +100,16 @@ const containerVariants = expandable
       }
     : {};
 
-const MotionComponent = draggable || expandable ? motion.div : 'div';
+  const MotionComponent = draggable || expandable ? motion.div : 'div';
 
-const motionProps =
+  const motionProps =
     draggable || expandable
       ? {
           variants: expandable ? containerVariants : undefined,
-          animate: expandable
-            ? isExpanded
-              ? 'expanded'
-              : 'collapsed'
-            : undefined,
+          animate: expandable ? (isExpanded ? 'expanded' : 'collapsed') : undefined,
           onClick: expandable ? handleToggleExpansion : undefined,
           drag: draggable,
-          dragConstraints: draggable
-            ? { left: 0, right: 0, top: 0, bottom: 0 }
-            : undefined,
+          dragConstraints: draggable ? { left: 0, right: 0, top: 0, bottom: 0 } : undefined,
           dragElastic: draggable ? 0.3 : undefined,
           dragTransition: draggable
             ? {
@@ -135,28 +127,28 @@ const motionProps =
   return (
     <>
       {/* Hidden SVG Filter */}
-      <svg className='hidden'>
+      <svg className="hidden">
         <defs>
           <filter
-            id='glass-blur'
-            x='0'
-            y='0'
-            width='100%'
-            height='100%'
-            filterUnits='objectBoundingBox'
+            id="glass-blur"
+            x="0"
+            y="0"
+            width="100%"
+            height="100%"
+            filterUnits="objectBoundingBox"
           >
             <feTurbulence
-              type='fractalNoise'
-              baseFrequency='0.003 0.007'
-              numOctaves='1'
-              result='turbulence'
+              type="fractalNoise"
+              baseFrequency="0.003 0.007"
+              numOctaves="1"
+              result="turbulence"
             />
             <feDisplacementMap
-              in='SourceGraphic'
-              in2='turbulence'
-              scale='200'
-              xChannelSelector='R'
-              yChannelSelector='G'
+              in="SourceGraphic"
+              in2="turbulence"
+              scale="200"
+              xChannelSelector="R"
+              yChannelSelector="G"
             />
           </filter>
         </defs>
@@ -185,7 +177,7 @@ const motionProps =
 
         {/* Face Layer (Main shadow and glow) */}
         <div
-          className='absolute inset-0 z-10'
+          className="absolute inset-0 z-10"
           style={{
             borderRadius,
             boxShadow: glowStyles[glowIntensity],
@@ -194,7 +186,7 @@ const motionProps =
 
         {/* Edge Layer (Inner highlights) */}
         <div
-          className='absolute inset-0 z-20'
+          className="absolute inset-0 z-20"
           style={{
             borderRadius,
             boxShadow: shadowStyles[shadowIntensity],
@@ -202,9 +194,7 @@ const motionProps =
         />
 
         {/* Content */}
-        <div className="relative z-30">
-        {children}
-        </div>
+        <div className="relative z-30">{children}</div>
       </MotionComponent>
     </>
   );
