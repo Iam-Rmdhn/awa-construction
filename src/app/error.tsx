@@ -2,8 +2,9 @@
 
 import { useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { motion } from 'motion/react';
-import { AlertTriangle, Home, RefreshCcw } from 'lucide-react';
+import { AlertTriangle, Home, RefreshCcw, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -17,6 +18,7 @@ export default function Error({
   reset: () => void;
 }) {
   const { t } = useLanguage();
+  const router = useRouter();
 
   useEffect(() => {
     console.error(error);
@@ -86,6 +88,15 @@ export default function Error({
                 >
                 <RefreshCcw className="w-5 h-5 mr-2" />
                 {t.error.retry}
+                </Button>
+
+                <Button
+                variant="outline"
+                className="border-white/30 text-white hover:bg-white/10 font-bold px-8 py-6 rounded-full text-base backdrop-blur-sm transition-all hover:scale-105 cursor-pointer"
+                onClick={() => router.back()}
+                >
+                <ArrowLeft className="w-5 h-5 mr-2" />
+                {t.notFound.goBack}
                 </Button>
                 
                 <Button 

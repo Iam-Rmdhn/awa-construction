@@ -56,10 +56,10 @@ export function Header() {
 
   const links = [
     { label: t.nav.home, href: '/' },
-    { label: t.nav.company, href: '#about' },
-    { label: t.nav.service, href: '#services' },
-    { label: t.nav.project, href: '#projects' },
-    { label: t.nav.contact, href: '#contact' },
+    { label: t.nav.company, href: pathname === '/' ? '#about' : '/#about' },
+    { label: t.nav.service, href: pathname === '/' ? '#services' : '/#services' },
+    { label: t.nav.project, href: pathname === '/' ? '#projects' : '/#projects' },
+    { label: t.nav.contact, href: '/consultation' },
   ];
 
   React.useEffect(() => {

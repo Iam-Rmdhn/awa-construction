@@ -125,7 +125,7 @@ export default function Chatbot() {
 
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="p-4 bg-[#00a0a0] rounded-full shadow-lg hover:bg-[#008080] transition-all text-white flex items-center justify-center"
+            className="p-4 bg-(--color-primary) rounded-full shadow-lg hover:bg-(--color-primary-hover) transition-all text-white flex items-center justify-center"
           >
             <div className="relative w-8 h-8">
               <Bot
@@ -155,9 +155,9 @@ export default function Chatbot() {
           {/* Desktop View */}
           <div className="hidden md:flex fixed bottom-28 right-6 z-50 flex-col w-85 h-112 bg-gray-100 rounded-2xl shadow-2xl overflow-hidden border border-gray-200 animate-in slide-in-from-bottom-10 fade-in duration-300">
             {/* Header */}
-            <div className="bg-[#00a0a0] p-4 flex items-center justify-between text-white">
+            <div className="bg-(--color-primary) p-4 flex items-center justify-between text-white">
               <div className="flex items-center gap-3">
-                <div className="bg-white p-1.5 rounded-full text-[#00a0a0]">
+                <div className="bg-white p-1.5 rounded-full text-(--color-primary)">
                   <Bot size={24} />
                 </div>
                 <div>
@@ -191,7 +191,7 @@ export default function Chatbot() {
                   <div
                     className={`${
                       message.type === 'user'
-                        ? 'bg-[#00a0a0] text-white rounded-2xl rounded-tr-none'
+                        ? 'bg-(--color-primary) text-white rounded-2xl rounded-tr-none'
                         : 'bg-white border border-gray-200 rounded-2xl rounded-tl-none text-gray-800'
                     } p-3 shadow-sm ${message.options ? 'w-full' : ''}`}
                   >

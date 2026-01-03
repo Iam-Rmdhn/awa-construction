@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { motion } from 'motion/react';
 import { Construction, ArrowLeft, Home } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -9,6 +10,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function NotFound() {
   const { t } = useLanguage();
+  const router = useRouter();
 
   return (
     <div className="min-h-screen bg-(--color-primary) flex flex-col font-nunito relative overflow-hidden">
@@ -91,14 +93,12 @@ export default function NotFound() {
               </Button>
 
               <Button
-                asChild
                 variant="outline"
-                className="border-white/30 text-white hover:bg-white/10 font-bold px-8 py-6 rounded-full text-base backdrop-blur-sm transition-all hover:scale-105"
+                className="border-white/30 text-white hover:bg-white/10 font-bold px-8 py-6 rounded-full text-base backdrop-blur-sm transition-all hover:scale-105 cursor-pointer"
+                onClick={() => router.back()}
               >
-                <Link href="javascript:history.back()">
-                  <ArrowLeft className="w-5 h-5 mr-2" />
-                  {t.notFound.goBack}
-                </Link>
+                <ArrowLeft className="w-5 h-5 mr-2" />
+                {t.notFound.goBack}
               </Button>
             </motion.div>
           </motion.div>

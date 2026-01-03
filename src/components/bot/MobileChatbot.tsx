@@ -86,9 +86,9 @@ export default function MobileChatbot({ onClose }: MobileChatbotProps) {
   return (
     <div className="fixed inset-0 z-60 bg-gray-50 flex flex-col animate-in slide-in-from-bottom duration-300">
       {/* Header */}
-      <div className="bg-[#00a0a0] p-4 flex items-center justify-between text-white shadow-md">
+      <div className="bg-(--color-primary) p-4 flex items-center justify-between text-white shadow-md">
         <div className="flex items-center gap-3">
-          <div className="bg-white p-2 rounded-full text-[#00a0a0]">
+          <div className="bg-white p-2 rounded-full text-(--color-primary)">
             <Bot size={24} />
           </div>
           <div>
@@ -105,7 +105,7 @@ export default function MobileChatbot({ onClose }: MobileChatbotProps) {
       <div
         ref={chatAreaRef}
         data-lenis-prevent
-        className="flex-1 overflow-y-auto p-4 space-y-4 bg-[#f0f2f5] overscroll-contain"
+        className="flex-1 overflow-y-auto p-4 space-y-4 bg-[--color-background-secondary] overscroll-contain"
         onWheel={(e) => e.stopPropagation()}
         onTouchMove={(e) => e.stopPropagation()}
       >
@@ -119,7 +119,7 @@ export default function MobileChatbot({ onClose }: MobileChatbotProps) {
             <div
               className={`${
                 message.type === 'user'
-                  ? 'bg-[#00a0a0] text-white rounded-2xl rounded-tr-none'
+                  ? 'bg-(--color-primary) text-white rounded-2xl rounded-tr-none'
                   : 'bg-white border border-gray-300 rounded-2xl rounded-tl-none text-gray-800'
               } p-3 shadow-sm ${message.options ? 'w-full' : ''}`}
             >
