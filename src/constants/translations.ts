@@ -132,6 +132,20 @@ export const TRANSLATIONS = {
       },
       submit: 'Consult Now',
     },
+    error: {
+      title: 'Something Went Wrong',
+      description:
+        "Sorry, our system encountered an unexpected issue. We're working on fixing it. Please try reloading the page.",
+      retry: 'Try Again',
+      back: 'Back to Home',
+    },
+    notFound: {
+      title: 'Page Not Found',
+      description:
+        "Sorry, it looks like the page you are looking for is under construction or unavailable. Let's go back to the foundation.",
+      backHome: 'Back to Home',
+      goBack: 'Go Back',
+    },
   },
   id: {
     nav: {
@@ -269,6 +283,20 @@ export const TRANSLATIONS = {
       },
       submit: 'Konsultasi Sekarang',
     },
+    error: {
+      title: 'Terjadi Kesalahan',
+      description:
+        'Maaf, sistem kami mengalami kendala tak terduga. Kami sedang berusaha memperbaikinya. Silakan coba muat ulang halaman.',
+      retry: 'Coba Lagi',
+      back: 'Kembali ke Beranda',
+    },
+    notFound: {
+      title: 'Halaman Tidak Ditemukan',
+      description:
+        'Maaf, sepertinya halaman yang Anda cari sedang dalam konstruksi atau tidak tersedia. Mari kembali ke pondasi awal.',
+      backHome: 'Kembali ke Beranda',
+      goBack: 'Kembali Sebelumnya',
+    },
   },
   ja: {
     nav: {
@@ -394,6 +422,20 @@ export const TRANSLATIONS = {
         timelinePlaceholder: '例：来月',
       },
       submit: '今すぐ相談する',
+    },
+    error: {
+      title: 'エラーが発生しました',
+      description:
+        '申し訳ありませんが、システムに予期しない問題が発生しました。現在修正作業中です。ページを再読み込みしてください。',
+      retry: 'あきらめないで',
+      back: 'ホームに戻る',
+    },
+    notFound: {
+      title: 'ページが見つかりません',
+      description:
+        '申し訳ありませんが、お探しのページは建設中か利用できないようです。基礎に戻りましょう。',
+      backHome: 'ホームに戻る',
+      goBack: '前に戻る',
     },
   },
 } as const;
