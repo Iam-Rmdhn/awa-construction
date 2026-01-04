@@ -103,7 +103,7 @@ Rencana Pengerjaan: ${formData.timeline}`;
             <div className="flex flex-col md:flex-row justify-center items-start md:items-center gap-6 md:gap-12 text-sm text-gray-700">
               <div className="font-nunito flex items-center gap-3">
                 <Mail className="shrink-0" size={20} />
-                <span>konsultasi@sagawagroup.id</span>
+                <span>renovasi@sagawagroup.id</span>
               </div>
               <div className="font-nunito flex items-center gap-3">
                 <Phone className="shrink-0" size={20} />
