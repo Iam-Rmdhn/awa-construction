@@ -8,6 +8,7 @@ import { IMAGES } from '@/constants/images';
 import Image from 'next/image';
 import Link from 'next/link';
 import { LiquidGlassCard } from '@/components/ui/liquid-glass-card';
+import { useLenis } from 'lenis/react';
 
 import { useLanguage } from '@/contexts/LanguageContext';
 import LanguageSwitcher from '@/components/ui/language-switcher';
@@ -20,6 +21,7 @@ export function Header() {
   const scrolled = useScroll(10);
   const { t } = useLanguage();
   const [navTheme, setNavTheme] = React.useState<'light' | 'dark'>('dark');
+  const lenis = useLenis();
 
   React.useEffect(() => {
     const handleScrollTheme = () => {
@@ -61,6 +63,39 @@ export function Header() {
     { label: t.nav.project, href: pathname === '/' ? '#projects' : '/#projects' },
     { label: t.nav.contact, href: '/consultation' },
   ];
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    setOpen(false);
+
+    if (href === '/') {
+      if (pathname === '/') {
+        e.preventDefault();
+        if (lenis) {
+          lenis.scrollTo(0);
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }
+      return;
+    }
+
+    if (href.includes('#')) {
+      const [path, hash] = href.split('#');
+      const targetId = hash;
+
+      if (pathname === '/' && (path === '' || path === '/')) {
+        e.preventDefault();
+        const element = document.getElementById(targetId);
+        if (element) {
+          if (lenis) {
+            lenis.scrollTo(element);
+          } else {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      }
+    }
+  };
 
   React.useEffect(() => {
     if (open) {
@@ -118,7 +153,11 @@ export function Header() {
               }
             )}
           >
-            <Link href="/" className="shrink-0 relative z-40" onClick={() => setOpen(false)}>
+            <Link
+              href="/"
+              className="shrink-0 relative z-40"
+              onClick={(e) => handleNavClick(e, '/')}
+            >
               <Image
                 src={IMAGES.LOGO}
                 alt="Awa Construction Logo"
@@ -136,12 +175,13 @@ export function Header() {
                   <Link
                     key={i}
                     href={link.href}
+                    onClick={(e) => handleNavClick(e, link.href)}
                     className="group relative cursor-pointer w-auto px-6 h-10 bg-white rounded-full overflow-hidden text-black font-unbounded flex items-center justify-center"
                   >
                     <span className="translate-y-0 group-hover:-translate-y-12 group-hover:opacity-0 transition-all duration-300 inline-block">
                       {link.label}
                     </span>
-                    <div className="flex gap-2 text-white bg-[#FEB05D] z-10 items-center absolute left-0 top-0 h-full w-full justify-center translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 rounded-full">
+                    <div className="flex gap-2 text-white bg-(--color-secondary) z-10 items-center absolute left-0 top-0 h-full w-full justify-center translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 rounded-full">
                       <span>{link.label}</span>
                     </div>
                   </Link>
@@ -157,6 +197,7 @@ export function Header() {
                       }
                     )}
                     href={link.href}
+                    onClick={(e) => handleNavClick(e, link.href)}
                   >
                     {link.label}
                   </Link>
@@ -216,7 +257,7 @@ export function Header() {
                 >
                   <Link
                     href={link.href}
-                    onClick={() => setOpen(false)}
+                    onClick={(e) => handleNavClick(e, link.href)}
                     style={{ transitionDelay: `${index * 50}ms` }}
                   >
                     {link.label}
@@ -227,7 +268,7 @@ export function Header() {
                   key={link.label}
                   href={link.href}
                   className="text-3xl font-light text-white hover:text-white/70 transition-colors"
-                  onClick={() => setOpen(false)}
+                  onClick={(e) => handleNavClick(e, link.href)}
                   style={{ transitionDelay: `${index * 50}ms` }}
                 >
                   {link.label}
