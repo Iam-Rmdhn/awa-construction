@@ -5,6 +5,65 @@ import { Instagram, Youtube } from 'lucide-react';
 import Link from 'next/link';
 import { motion } from 'motion/react';
 
+
+const TiktokIcon = ({ size = 24, className }: { size?: number; className?: string }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    className={className}
+  >
+    <path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.445v13.672a2.896 2.896 0 0 1-5.201 1.743l-.002-.001.002.001a2.895 2.895 0 0 1 3.183-4.51v-3.5a6.329 6.329 0 0 0-5.394 10.692 6.33 6.33 0 0 0 10.857-4.424V8.687a8.182 8.182 0 0 0 4.773 1.526V6.79a4.831 4.831 0 0 1-1.003-.104z" />
+  </svg>
+);
+
+const SocialLink = ({
+  href,
+  icon: Icon,
+  label,
+}: {
+  href: string;
+  icon: React.ElementType;
+  label: string;
+}) => (
+  <div className="group relative">
+    <Link
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="bg-[#2E5F9E] p-3 rounded-full text-white hover:bg-[#1a3b66] transition-colors flex items-center justify-center"
+      aria-label={label}
+    >
+      <Icon size={24} />
+      <span className="sr-only">{label}</span>
+    </Link>
+    <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1 bg-gray-900 text-white text-xs rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-10 shadow-lg">
+      {label}
+      <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-gray-900" />
+    </div>
+  </div>
+);
+
+const socialLinks = [
+  {
+    label: 'TikTok',
+    href: 'https://www.tiktok.com/@sagawamedia',
+    icon: TiktokIcon,
+  },
+  {
+    label: 'Instagram',
+    href: 'https://www.instagram.com/sagawagroup',
+    icon: Instagram,
+  },
+  {
+    label: 'YouTube',
+    href: 'https://www.youtube.com/@sagawamedia',
+    icon: Youtube,
+  },
+];
+
 export default function Footer() {
   const { t } = useLanguage();
 
@@ -26,20 +85,9 @@ export default function Footer() {
               {t.footer.followUs}
             </h3>
             <div className="flex gap-4 justify-start md:justify-end">
-              <Link
-                href="#"
-                className="bg-[#2E5F9E] p-3 rounded-full text-white hover:bg-[#1a3b66] transition-colors"
-                aria-label="Instagram"
-              >
-                <Instagram size={24} />
-              </Link>
-              <Link
-                href="#"
-                className="bg-[#2E5F9E] p-3 rounded-full text-white hover:bg-[#1a3b66] transition-colors"
-                aria-label="YouTube"
-              >
-                <Youtube size={24} />
-              </Link>
+              {socialLinks.map((social) => (
+                <SocialLink key={social.label} {...social} />
+              ))}
             </div>
           </div>
         </div>
@@ -65,7 +113,6 @@ export default function Footer() {
               AWA CONSTRUCTION
             </span>
           </h1>
-          {/* 3D Effect Layer */}
           <h1
             className="absolute inset-0 font-unbounded font-black text-[10vw] md:text-[8vw] lg:text-[7vw] leading-none tracking-tighter text-gray-300 -z-10 transform translate-x-1 translate-y-1"
             aria-hidden="true"
