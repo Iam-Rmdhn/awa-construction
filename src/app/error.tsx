@@ -26,12 +26,10 @@ export default function Error({
 
   return (
     <div className="min-h-screen bg-(--color-primary) flex flex-col font-nunito relative overflow-hidden">
-        {/* Background Decorations */}
       <div className="absolute inset-0 overflow-hidden opacity-10 pointer-events-none">
         <div className="absolute top-[-10%] right-[-10%] w-[50vh] h-[50vh] rounded-full border-20 border-white/20 blur-3xl" />
         <div className="absolute bottom-[-10%] left-[-10%] w-[60vh] h-[60vh] rounded-full bg-(--color-danger)/20 blur-3xl" />
-         {/* Grid pattern */}
-         <div 
+        <div 
           className="absolute inset-0" 
           style={{ 
             backgroundImage: 'radial-gradient(circle, #ffffff 1px, transparent 1px)', 
@@ -41,8 +39,7 @@ export default function Error({
         />
       </div>
 
-       {/* Diagonal Lines - consistent with other pages */}
-       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-screen h-16 overflow-hidden z-0 opacity-30">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-screen h-16 overflow-hidden z-0 opacity-30">
         <div className="absolute inset-0 flex justify-center">
           {[...Array(60)].map((_, i) => (
             <div
@@ -61,14 +58,13 @@ export default function Error({
             transition={{ duration: 0.5 }}
             className="flex flex-col items-center"
             >
-            {/* Icon Animation */}
             <motion.div
                 initial={{ y: -20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.2 }}
                 className="mb-8 p-6 rounded-3xl bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl relative"
             >
-                <div className="absolute -top-3 -right-3 w-8 h-8 bg-red-500 rounded-full flex items-center justify-center animate-pulse">
+                <div className="absolute -top-3 -right-3 w-8 h-8 bg-(--color-danger) rounded-full flex items-center justify-center animate-pulse">
                 <span className="text-white font-bold text-lg">!</span>
                 </div>
                 <AlertTriangle className="w-20 h-20 md:w-32 md:h-32 text-white" strokeWidth={1.5} />
@@ -84,7 +80,7 @@ export default function Error({
             <div className="flex flex-col sm:flex-row gap-4">
                 <Button
                 onClick={reset}
-                className="bg-(--color-secondary) text-white hover:bg-[#e99b45] font-bold px-8 py-6 rounded-full text-base transition-all hover:scale-105 shadow-lg shadow-orange-500/20"
+                className="bg-(--color-secondary) text-white hover:bg-(--color-secondary) font-bold px-8 py-6 rounded-full text-base transition-all hover:scale-105 shadow-lg shadow-orange-500/20"
                 >
                 <RefreshCcw className="w-5 h-5 mr-2" />
                 {t.error.retry}

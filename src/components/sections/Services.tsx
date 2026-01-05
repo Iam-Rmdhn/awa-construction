@@ -33,7 +33,6 @@ export default function Services() {
   return (
     <section className="py-12 md:py-24 bg-white" id="services">
       <div className="container mx-auto px-4 sm:px-6 md:px-[61px]">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -52,7 +51,6 @@ export default function Services() {
           </p>
         </motion.div>
 
-        {/* Cards */}
         <div className="flex flex-col items-center gap-8 md:gap-12 md:flex-row md:flex-wrap md:justify-center">
           {services.map((service, index) => (
             <motion.div
@@ -67,9 +65,7 @@ export default function Services() {
               viewport={{ once: true }}
               className="relative flex flex-col w-[330px] h-[430px] mx-auto rounded-4xl overflow-hidden border-5 border-(--color-secondary) shadow-[8px_8px_0px_0px_var(--color-primary)] bg-white group transition-transform duration-300 md:hover:-translate-y-3!"
             >
-              {/* Image & Icon */}
               <div className="relative h-[65%] w-full bg-white p-6 flex items-center justify-center z-10">
-                {/* Icon */}
                 <div className="absolute top-6 right-6 w-10 h-10 z-10">
                   <Image
                     src={service.icon}
@@ -79,7 +75,6 @@ export default function Services() {
                     className="object-contain"
                   />
                 </div>
-                {/* Illustration */}
                 <div className="relative w-full h-[90%]">
                   <Image
                     src={service.image}
@@ -89,8 +84,6 @@ export default function Services() {
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                 </div>
-
-                {/* Title Tab */}
                 <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[85%] bg-white rounded-b-2xl py-4 flex items-center justify-center shadow-none z-20">
                   <h3 className="font-unbounded font-bold text-(--color-foreground) text-center text-lg leading-tight">
                     {service.title.split('&').map((part, i, arr) => (
@@ -103,8 +96,6 @@ export default function Services() {
                   </h3>
                 </div>
               </div>
-
-              {/* Description */}
               <div className="h-[35%] bg-(--color-secondary) px-6 pb-6 pt-12 flex items-center justify-center relative z-0">
                 <p className="font-nunito text-white text-center text-sm md:text-base leading-relaxed">
                   {service.description}

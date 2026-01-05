@@ -27,7 +27,6 @@ export default function Dropdown({
   const [selectedValue, setSelectedValue] = useState(value || '');
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -51,7 +50,6 @@ export default function Dropdown({
 
   return (
     <div ref={dropdownRef} className={`relative w-full ${className}`}>
-      {/* Trigger Button */}
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
@@ -74,7 +72,6 @@ export default function Dropdown({
         />
       </button>
 
-      {/* Dropdown Panel */}
       <div
         className={`absolute z-50 w-full mt-2 bg-white border border-[#222831] rounded-lg shadow-lg overflow-hidden transition-all duration-300 origin-top ${
           isOpen

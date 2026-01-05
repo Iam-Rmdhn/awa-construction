@@ -64,7 +64,6 @@ export default function FeaturedProjects() {
           </div>
         </div>
       </div>
-      {/* Content */}
       <div className="flex flex-col justify-center w-full md:w-1/2 text-white">
         <h3 className="font-unbounded letter-spacing-[8%] text-lg sm:text-xl md:text-2xl font-bold mb-2 md:mb-4 uppercase">
           {project.title}
@@ -109,7 +108,6 @@ export default function FeaturedProjects() {
 
   return (
     <section className="relative bg-(--color-primary) overflow-hidden" id="projects">
-      {/* Diagonal Lines Decoration - Top */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-screen h-16 overflow-hidden">
         <div className="absolute inset-0 flex justify-center">
           {[...Array(60)].map((_, i) => (
@@ -117,9 +115,7 @@ export default function FeaturedProjects() {
           ))}
         </div>
       </div>
-      {/* Projects Section */}
       <div className="py-12 md:py-24 pt-20 md:pt-32 container mx-auto px-4 sm:px-6 md:px-[61px]">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -138,16 +134,12 @@ export default function FeaturedProjects() {
           </h2>
         </motion.div>
 
-        {/* Project Cards */}
         <div className="mb-8 md:mb-16">
-          {/* Always visible projects - First 2 */}
           <div className="flex flex-col gap-8 md:gap-12">
             {projects.slice(0, 2).map((project, index) => (
               <ProjectCard key={project.title} project={project} index={index} />
             ))}
           </div>
-
-          {/* Expandable projects - The rest */}
           <AnimatePresence>
             {showAll && (
               <motion.div
@@ -166,7 +158,6 @@ export default function FeaturedProjects() {
             )}
           </AnimatePresence>
         </div>
-        {/* View All Button */}
         {projects.length > 2 && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -188,7 +179,6 @@ export default function FeaturedProjects() {
           </motion.div>
         )}
       </div>
-      {/* Diagonal Lines Decoration - Bottom */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-screen h-16 overflow-hidden">
         <div className="absolute inset-0 flex justify-center">
           {[...Array(60)].map((_, i) => (

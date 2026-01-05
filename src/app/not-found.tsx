@@ -14,11 +14,9 @@ export default function NotFound() {
 
   return (
     <div className="min-h-screen bg-(--color-primary) flex flex-col font-nunito relative overflow-hidden">
-      {/* Background Decorations */}
       <div className="absolute inset-0 overflow-hidden opacity-10 pointer-events-none">
         <div className="absolute top-[-10%] left-[-10%] w-[50vh] h-[50vh] rounded-full border-20 border-white/20 blur-3xl" />
         <div className="absolute bottom-[-10%] right-[-10%] w-[60vh] h-[60vh] rounded-full bg-(--color-secondary)/20 blur-3xl" />
-        {/* Grid pattern */}
         <div
           className="absolute inset-0"
           style={{
@@ -45,7 +43,6 @@ export default function NotFound() {
             transition={{ duration: 0.6 }}
             className="flex flex-col items-center"
           >
-            {/* Icon Animation */}
             <motion.div
               initial={{ scale: 0, rotate: -180 }}
               animate={{ scale: 1, rotate: 0 }}
@@ -58,7 +55,6 @@ export default function NotFound() {
               <Construction className="w-20 h-20 md:w-32 md:h-32 text-white" strokeWidth={1.5} />
             </motion.div>
 
-            {/* Text Content */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -75,7 +71,6 @@ export default function NotFound() {
               </p>
             </motion.div>
 
-            {/* Actions */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -105,7 +100,6 @@ export default function NotFound() {
         </div>
       </div>
 
-      {/* Diagonal Lines - Bottom */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-screen h-16 overflow-hidden z-0 opacity-30">
         <div className="absolute inset-0 flex justify-center">
           {[...Array(60)].map((_, i) => (

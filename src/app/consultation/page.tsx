@@ -66,7 +66,7 @@ Rencana Pengerjaan: ${formData.timeline}`;
   return (
     <main className="min-h-screen bg-white">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#2E5F9E] text-white h-16 flex items-center px-4 md:px-8 shadow-md">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-(--color-primary) text-white h-16 flex items-center px-4 md:px-8 shadow-md">
         <div className="container mx-auto max-w-4xl flex items-center gap-4">
           <Link href="/" className="p-2 hover:bg-white/10 rounded-full transition-colors">
             <ArrowLeft size={24} />
@@ -124,7 +124,6 @@ Rencana Pengerjaan: ${formData.timeline}`;
             onSubmit={handleSubmit}
             className="space-y-8"
           >
-            {/* Section 1: Basic Info */}
             <div>
               <h3 className="font-unbounded font-bold text-lg mb-6 border-b pb-2">
                 {t.consultation.form.title}
@@ -141,7 +140,7 @@ Rencana Pengerjaan: ${formData.timeline}`;
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#2E5F9E] focus:border-transparent outline-none transition-all"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-(--color-primary) focus:border-transparent outline-none transition-all"
                       placeholder=""
                     />
                     <div className="absolute right-2 top-1/2 -translate-y-1/2 bg-white px-2 py-1">
@@ -160,7 +159,7 @@ Rencana Pengerjaan: ${formData.timeline}`;
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#2E5F9E] focus:border-transparent outline-none transition-all"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-(--color-primary) focus:border-transparent outline-none transition-all"
                       placeholder=""
                     />
                     <div className="absolute right-2 top-1/2 -translate-y-1/2 bg-white px-2 py-1">
@@ -179,7 +178,7 @@ Rencana Pengerjaan: ${formData.timeline}`;
                       name="whatsapp"
                       value={formData.whatsapp}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#2E5F9E] focus:border-transparent outline-none transition-all"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-(--color-primary) focus:border-transparent outline-none transition-all"
                       placeholder=""
                     />
                     <div className="absolute right-2 top-1/2 -translate-y-1/2 bg-white px-2 py-1">
@@ -190,7 +189,7 @@ Rencana Pengerjaan: ${formData.timeline}`;
               </div>
             </div>
 
-            {/* Section 2: Project Detail */}
+            {/* Project Detail */}
             <div>
               <h3 className="font-unbounded font-bold text-lg mb-6 border-b pb-2">
                 {t.consultation.project.title}
@@ -206,7 +205,7 @@ Rencana Pengerjaan: ${formData.timeline}`;
                       name="projectType"
                       value={formData.projectType}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#2E5F9E] focus:border-transparent outline-none transition-all appearance-none bg-white"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-(--color-primary) focus:border-transparent outline-none transition-all appearance-none bg-white"
                       placeholder={t.consultation.project.typePlaceholder}
                     />
                     <div className="absolute right-2 top-1/2 -translate-y-1/2 bg-white px-2 py-1">
@@ -224,7 +223,7 @@ Rencana Pengerjaan: ${formData.timeline}`;
                       name="projectLocation"
                       value={formData.projectLocation}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#2E5F9E] focus:border-transparent outline-none transition-all"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-(--color-primary) focus:border-transparent outline-none transition-all"
                       placeholder=""
                     />
                     <div className="absolute right-2 top-1/2 -translate-y-1/2 bg-white px-2 py-1">
@@ -243,7 +242,7 @@ Rencana Pengerjaan: ${formData.timeline}`;
                         name="areaLength"
                         value={formData.areaLength}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#2E5F9E] focus:border-transparent outline-none transition-all"
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-(--color-primary) focus:border-transparent outline-none transition-all"
                         placeholder={t.consultation.project.length}
                       />
                       <div className="absolute right-2 top-1/2 -translate-y-1/2 bg-white px-2 py-1">
@@ -257,7 +256,7 @@ Rencana Pengerjaan: ${formData.timeline}`;
                         name="areaWidth"
                         value={formData.areaWidth}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#2E5F9E] focus:border-transparent outline-none transition-all"
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-(--color-primary) focus:border-transparent outline-none transition-all"
                         placeholder={t.consultation.project.width}
                       />
                     </div>
@@ -269,7 +268,7 @@ Rencana Pengerjaan: ${formData.timeline}`;
               </div>
             </div>
 
-            {/* Section 3: Preference & Budget */}
+            {/* Preference & Budget */}
             <div>
               <h3 className="font-unbounded font-bold text-lg mb-6 border-b pb-2">
                 {t.consultation.preferences.title}
@@ -285,7 +284,7 @@ Rencana Pengerjaan: ${formData.timeline}`;
                       name="budget"
                       value={formData.budget}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#2E5F9E] focus:border-transparent outline-none transition-all"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-(--color-primary) focus:border-transparent outline-none transition-all"
                       placeholder={t.consultation.preferences.budgetPlaceholder}
                     />
                     <div className="absolute right-2 top-1/2 -translate-y-1/2 bg-white px-2 py-1">
@@ -303,7 +302,7 @@ Rencana Pengerjaan: ${formData.timeline}`;
                       name="timeline"
                       value={formData.timeline}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#2E5F9E] focus:border-transparent outline-none transition-all"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-(--color-primary) focus:border-transparent outline-none transition-all"
                       placeholder={t.consultation.preferences.timelinePlaceholder}
                     />
                     <div className="absolute right-2 top-1/2 -translate-y-1/2 bg-white px-2 py-1">
@@ -318,7 +317,7 @@ Rencana Pengerjaan: ${formData.timeline}`;
             <div className="flex justify-center pt-8">
               <button
                 type="submit"
-                className="bg-[#FEB05D] text-white font-bold text-lg px-12 py-4 rounded-full shadow-lg hover:shadow-[4px_4px_0px_0px_var(--color-tertiary)] transition-all transform hover:-translate-y-1 active:translate-y-0"
+                className="bg-(--color-secondary) text-white font-bold text-lg px-12 py-4 rounded-full shadow-lg hover:shadow-[4px_4px_0px_0px_var(--color-tertiary)] transition-all transform hover:-translate-y-1 active:translate-y-0"
               >
                 {t.consultation.submit}
               </button>

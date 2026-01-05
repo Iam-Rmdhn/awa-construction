@@ -30,7 +30,6 @@ export default function LanguageSwitcher({
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -47,11 +46,9 @@ export default function LanguageSwitcher({
     setIsOpen(false);
   };
 
-  // Icon mode with dropdown (for desktop)
   if (displayMode === 'icon') {
     return (
       <div className="relative" ref={dropdownRef}>
-        {/* Globe Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
           className={`
@@ -71,7 +68,6 @@ export default function LanguageSwitcher({
           <Globe className="w-5 h-5" />
         </button>
 
-        {/* Dropdown Menu */}
         <div
           className={`
             absolute right-0 top-full mt-2
@@ -113,7 +109,6 @@ export default function LanguageSwitcher({
     );
   }
 
-  // Buttons mode (for mobile)
   return (
     <div className="flex items-center gap-1">
       {languages.map((lang) => (

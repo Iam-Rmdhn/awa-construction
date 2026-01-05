@@ -12,7 +12,6 @@ export default function Contact() {
 
   return (
     <section className="relative bg-[#061B35] overflow-hidden py-16 md:py-24" id="contact">
-      {/* Background Image Decoration - Right Bottom */}
       <div className="absolute top-1/4 left-1/2 w-1/2 h-full pointer-events-none opacity-30 md:opacity-50">
         <Image
           src={IMAGES.CONTACT_IMAGE1}
@@ -23,10 +22,8 @@ export default function Contact() {
         />
       </div>
 
-      {/* Content */}
       <div className="container mx-auto px-4 sm:px-6 md:px-[61px] relative z-10">
         <div className="max-w-2xl">
-          {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -50,8 +47,6 @@ export default function Contact() {
                 'Tim kami siap memberikan solusi konstruksi yang efisien, berkualitas tinggi, dan terintegrasi yang disesuaikan dengan kebutuhan bisnis Anda'}
             </p>
           </motion.div>
-
-          {/* CTA Button */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

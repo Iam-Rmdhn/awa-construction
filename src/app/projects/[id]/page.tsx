@@ -44,7 +44,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
-              className="relative w-full aspect-4/3 rounded-2xl md:rounded-[32px] overflow-hidden border-4 border-[#2E5F9E]/30"
+              className="relative w-full aspect-4/3 rounded-2xl md:rounded-[32px] overflow-hidden border-4 border-(--color-primary)/20"
             >
               <Image
                 src={project.image}
@@ -78,9 +78,9 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
                 {project.description}
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 p-6 bg-[#2E5F9E]/20 rounded-2xl border border-[#2E5F9E]">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 p-6 bg-(--color-primary)/20 rounded-2xl border border-(--color-primary)/20">
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-[#2E5F9E] flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-(--color-primary) flex items-center justify-center shrink-0">
                     <MapPinned size={20} className="text-(--color-secondary)" />
                   </div>
                   <div>
@@ -90,7 +90,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-[#2E5F9E] flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-(--color-primary) flex items-center justify-center shrink-0">
                     <LandPlot size={20} className="text-(--color-secondary)" />
                   </div>
                   <div>
@@ -102,7 +102,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-[#2E5F9E] flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-(--color-primary) flex items-center justify-center shrink-0">
                     <AlarmClock size={20} className="text-(--color-secondary)" />
                   </div>
                   <div>
@@ -114,7 +114,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-[#2E5F9E] flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-(--color-primary) flex items-center justify-center shrink-0">
                     <Calendar size={20} className="text-(--color-secondary)" />
                   </div>
                   <div>

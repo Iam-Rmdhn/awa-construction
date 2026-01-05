@@ -126,7 +126,6 @@ export const LiquidGlassCard = ({
 
   return (
     <>
-      {/* Hidden SVG Filter */}
       <svg className="hidden">
         <defs>
           <filter
@@ -166,7 +165,6 @@ export const LiquidGlassCard = ({
         {...motionProps}
         {...props}
       >
-        {/* Bend Layer (Backdrop blur with distortion) */}
         <div
           className={`absolute inset-0 ${blurClasses[blurIntensity]} z-0`}
           style={{
@@ -175,7 +173,6 @@ export const LiquidGlassCard = ({
           }}
         />
 
-        {/* Face Layer (Main shadow and glow) */}
         <div
           className="absolute inset-0 z-10"
           style={{
@@ -183,8 +180,6 @@ export const LiquidGlassCard = ({
             boxShadow: glowStyles[glowIntensity],
           }}
         />
-
-        {/* Edge Layer (Inner highlights) */}
         <div
           className="absolute inset-0 z-20"
           style={{
@@ -192,8 +187,6 @@ export const LiquidGlassCard = ({
             boxShadow: shadowStyles[shadowIntensity],
           }}
         />
-
-        {/* Content */}
         <div className="relative z-30">{children}</div>
       </MotionComponent>
     </>

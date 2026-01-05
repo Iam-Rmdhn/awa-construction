@@ -4,7 +4,7 @@ export type Project = {
   id: string;
   title: string;
   description: string;
-  fullDescription?: string; // For the detail page if needed, otherwise use description
+  fullDescription?: string;
   type: string;
   year: string;
   location: string;
