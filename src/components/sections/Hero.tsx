@@ -137,9 +137,9 @@ export default function Hero() {
               className="p-2 text-white hover:text-[#FEB05D] transition-colors focus:outline-none"
               aria-label="Previous slide"
             >
-              <ChevronLeft size={32} />
+              <ChevronLeft size={24} />
             </button>
-            <div className="font-unbounded text-white text-lg tracking-widest">
+            <div className="font-unbounded text-white text-sm tracking-widest">
               <span className="font-bold">{currentIndex + 1}</span>
               <span className="opacity-60 mx-1">/</span>
               <span className="opacity-60">{HERO_ASSETS.length}</span>
@@ -149,7 +149,7 @@ export default function Hero() {
               className="p-2 text-white hover:text-[#FEB05D] transition-colors focus:outline-none"
               aria-label="Next slide"
             >
-              <ChevronRight size={32} />
+              <ChevronRight size={24} />
             </button>
           </div>
       </div>
