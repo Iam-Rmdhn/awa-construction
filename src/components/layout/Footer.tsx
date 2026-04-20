@@ -76,7 +76,7 @@ export default function Footer() {
               {t.footer.location}
             </h3>
             <p className="text-gray-700 font-bold leading-relaxed text-lg">
-              Jl. Sawo No. 156, RT: 04/01 Cipedak-Jagakarsa, Jakarta Selatan 12630
+              Jl. H Misan V No. 11-B/6-A, Kukusan-Beji, Depok 16425
             </p>
           </div>
 

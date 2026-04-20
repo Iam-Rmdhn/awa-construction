@@ -30,8 +30,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id">
-      <body className={`${unbounded.variable} ${nunitoSans.variable} antialiased`}>
+    <html lang="id" suppressHydrationWarning>
+      <body className={`${unbounded.variable} ${nunitoSans.variable} antialiased`} suppressHydrationWarning>
         <LanguageProvider>
           <ChatHistoryProvider>
             <SplashScreen />
