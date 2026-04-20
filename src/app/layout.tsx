@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Unbounded, Nunito_Sans } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 import { Header } from '@/components/layout/Navbar';
 import SmoothScroll from '@/components/providers/SmoothScroll';
@@ -42,6 +43,7 @@ export default function RootLayout({
             </SmoothScroll>
           </ChatHistoryProvider>
         </LanguageProvider>
+        <Analytics />
       </body>
     </html>
   );
