@@ -21,7 +21,7 @@ const nunitoSans = Nunito_Sans({
 export const metadata: Metadata = {
   title: 'Awa Construction',
   description: 'Jasa renovasi dan konsultasi gratis untuk kontruksi outlet ataupun ruko anda',
-  keywords: ['Awa Construction', 'Renovasi', 'Konsultasi', 'Kontruksi', 'Outlet', 'Ruko'],
+  keywords: ['Awa Construction', 'Renovasi', 'Konsultasi', 'Kontruksi', 'Outlet', 'Ruko','Sagawa Group', 'Sagawa Media', 'Sagawa', 'kemitraan'],
   authors: [{ name: 'Awa Construction' }],
   creator: 'Awa Construction',
   publisher: 'Awa Construction',
